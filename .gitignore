@@ -1,14 +1,14 @@
 #ignores local library directory for building
-Project Poison/Library
+GameJam2016/Library
 
 #ignores temp folder
-Project Poison/Temp
+GameJam2016/Temp
 
 #ignores the obj library
-Project Poison/obj
+GameJam2016/obj
 
 #ignore Project in Visual Studios
-Project Poison/Project Poison.CSharp.csproj
+GameJam2016/GameJam2016.CSharp.csproj
 
 #
 
@@ -22,4 +22,4 @@ Project Poison/Project Poison.CSharp.csproj
 *.booproj
 *.pidb
 *.sln
-Project Poison/ProjectSettings/ProjectVersion.txt
+GameJam2016/ProjectSettings/ProjectVersion.txt
