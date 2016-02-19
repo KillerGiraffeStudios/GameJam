@@ -12,7 +12,7 @@ public class MoveScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetAxis("Horizontal") > 0.1 && r_body.velocity.x<max_speed) {
+        if (Input.GetAxis("Horizontal") > 0.1 && Mathf.Abs(r_body.velocity.x)<max_speed) {
             r_body.AddForce(new Vector2(Input.GetAxis("Horizontal") * move_force, 0));
         }
 	}
