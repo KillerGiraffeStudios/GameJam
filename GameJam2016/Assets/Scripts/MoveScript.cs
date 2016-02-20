@@ -18,16 +18,16 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(Input.GetAxis("P1_Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
+        if (Mathf.Abs(Input.GetAxis(gameObject.name+"_Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
         {
             r_body.drag = 0;
-            r_body.AddForce(new Vector2(Input.GetAxis("P1_Horizontal") * move_force, 0));
+            r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal") * move_force, 0));
             
-            if(Input.GetAxis("P1_Horizontal")>0.1)
+            if(Input.GetAxis(gameObject.name + "_Horizontal") >0.1)
             {
                 transform.eulerAngles= new Vector3(0,180,0);
             }
-            if (Input.GetAxis("P1_Horizontal") < -0.1)
+            if (Input.GetAxis(gameObject.name + "_Horizontal") < -0.1)
             {
                 transform.eulerAngles = new Vector3(0, -1, 0);
             }
@@ -41,7 +41,7 @@ public class MoveScript : MonoBehaviour
         }
         if (jumpPressed != false)
         {
-            if (Input.GetButtonDown("P1_Fire1"))
+            if (Input.GetButtonDown(gameObject.name + "_Fire1"))
             {
                 if (numOfJumpsRemaning > 0)
                 {
@@ -51,11 +51,11 @@ public class MoveScript : MonoBehaviour
 
             }
         }
-        if(Input.GetButtonUp("P1_Fire1"))
+        if(Input.GetButtonUp(gameObject.name + "_Fire1"))
         {
             jumpPressed = true;
         }
-        if(Input.GetButtonDown("P1_Fire2"))
+        if(Input.GetButtonDown(gameObject.name + "_Fire2"))
         {
             shoot();
         }
