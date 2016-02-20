@@ -36,7 +36,7 @@ public class GameSettings : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (matchSet == true) {
-			playerAmount = new GameObject[players];	//create the amount of players in the game
+			//playerAmount = new GameObject[players];	//create the amount of players in the game
 			matchSet = false;						//set false so we do not loop anymore
 		}
 	}

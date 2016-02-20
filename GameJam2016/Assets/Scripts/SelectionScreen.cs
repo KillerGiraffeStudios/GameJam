@@ -17,10 +17,12 @@ public class SelectionScreen : MonoBehaviour {
 		if (thing == "e") {
 			Debug.Log ("test");
 		}
+		if(Timer.isDone == true) {
+			Debug.Log ("Finished");
+		}
 	}
 
 	void updateObject() {
 
 	}
-
 }
