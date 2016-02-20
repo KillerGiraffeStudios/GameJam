@@ -7,7 +7,7 @@ public class GameSettings : MonoBehaviour {
 	public int players;
 
 	//the variable that will become the array of GameObjects
-	public GameObject []playerAmount;
+	public string []playerAmount;
 
 	//keeps track if a match has been started from the Menu
 	public bool matchSet = false;
@@ -40,7 +40,12 @@ public class GameSettings : MonoBehaviour {
 		if (matchSet == true) {
 			//TODO: possible change this logic
 			//players = GameObject.FindGameObjectsWithTag("Player");
-			playerAmount = new GameObject[players];	//create the amount of players in the game
+			playerAmount = new string[players];	//create the amount of players in the game
+			for (int i = 0; i < players; i++) {
+				playerAmount [i] = "P" + (i+1).ToString();
+				Debug.Log (i);
+			}
+				
 			Debug.Log(playerAmount.Length);			//TODO: remove test
 			matchSet = false;							//set false so we do not loop anymore
 		}
