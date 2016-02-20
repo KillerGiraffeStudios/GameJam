@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerClass : MonoBehaviour {
 
     string class_name;
+    bool canPress = true;;
     delegate void buttonDelegate();
 	//Based on xbox controller
 	buttonDelegate xMap;//mapping for x button
@@ -14,9 +15,24 @@ public class PlayerClass : MonoBehaviour {
         class_name = gameObject.tag+" ";
 	}
 	
+    public void sleep(float time) {
+        canPress = false;
+        Invoke("wake", time);
+    }
+    void wake() {
+        canPress = true;
+    }
 	// Update is called once per frame
 	void Update () {
-		
+        if (canPress) {
+            if (Input.GetButtonDown(gameObject.name + "_Fire1")) {
+                xMap();
+            }else if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
+                yMap();
+            } else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
+                bMap();
+            }
+        }
 	}
 
     public string getName() {
@@ -35,7 +51,7 @@ public class PlayerClass : MonoBehaviour {
 		} else if (class_name.Equals ("Berserker")) {
 
 		} else if (class_name.Equals ("Wizard")) {
-
+            yMap = wizard_flame;
 		} else if (class_name.Equals ("Rogue")) {
 
 		} else {
@@ -76,7 +92,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 
-	void wizard_y(){
+	void wizard_flame(){
 
 	}
 	void wizard_b(){
