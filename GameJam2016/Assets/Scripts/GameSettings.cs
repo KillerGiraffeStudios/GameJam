@@ -15,6 +15,8 @@ public class GameSettings : MonoBehaviour {
 	//if timer runs out, end the match and prompt restart
 	public bool matchEnd = false;
 
+
+
 	private static GameSettings _instance;
 	public static GameSettings Instance
 	{
