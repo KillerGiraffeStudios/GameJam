@@ -17,13 +17,13 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
+        if (Mathf.Abs(Input.GetAxis("P1_Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
         {
-            r_body.AddForce(new Vector2(Input.GetAxis("Horizontal") * move_force, 0));
+            r_body.AddForce(new Vector2(Input.GetAxis("P1_Horizontal") * move_force, 0));
         }
         if (jumpPressed != false)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("P1_Fire1"))
             {
                 if (numOfJumpsRemaning > 0)
                 {
@@ -32,9 +32,13 @@ public class MoveScript : MonoBehaviour
 
             }
         }
-        if(Input.GetButtonUp("Fire1"))
+        if(Input.GetButtonUp("P1_Fire1"))
         {
             jumpPressed = true;
+        }
+        if(Input.GetButtonDown("P1_Fire2"))
+        {
+            shoot();
         }
     }
 
@@ -50,4 +54,10 @@ public class MoveScript : MonoBehaviour
             numOfJumpsRemaning = 2;
         }
     }
+    public GameObject Arrow;
+    void shoot() {
+        Instantiate(Arrow, transform.position, Quaternion.identity);
+
+    }
+
 }

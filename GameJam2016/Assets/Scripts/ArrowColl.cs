@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ArrowColl : MonoBehaviour {
-    float launch_force = 10;
+    float launch_force = 50;
     Rigidbody2D r_body;
 
 	// Use this for initialization
