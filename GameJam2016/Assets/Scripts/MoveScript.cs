@@ -75,6 +75,11 @@ public class MoveScript : MonoBehaviour {
         }
 
     }
+    void OnTriggerExit2D(Collider2D coll) {
+        if (coll.gameObject.CompareTag("Floor")) {
+            onFloor = false;
+        }
+    }
     public GameObject Arrow;
     void shoot()
     {
