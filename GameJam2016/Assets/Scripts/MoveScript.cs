@@ -83,7 +83,7 @@ public class MoveScript : MonoBehaviour {
         isSleeping = true;
         Invoke("notSleeping", time);
     }
-    void notBlocking()
+    void notSleeping()
     {
         isSleeping = false;
     }
