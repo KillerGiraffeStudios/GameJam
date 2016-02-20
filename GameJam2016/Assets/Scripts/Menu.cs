@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour {
 	bool ShowButton = true;
 
 	//boolean set true if the game settings have been confirmed
-	bool start = true;
+	bool start = false;
 
 	void Start() {
 	}
@@ -29,31 +29,36 @@ public class Menu : MonoBehaviour {
 		GUI.skin.button.fontSize = 15;
 		GUI.contentColor = Color.black;
 
-
 		if (ShowButton) {
-			if (GUI.Button(new Rect(Screen.width/2 - 50 , Screen.height /2 + 50, 100, 100), "START")) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height / 2 + 50, 100, 100), "START")) {
 				ShowButton = false;
 			}
 		}
 
 		//once the start game button has been selected - do this
 		if (!ShowButton) {
-			if (start) {
-				GUI.contentColor = Color.red;
-				if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 125, 100, 50), "GO!")) {
-					//Application.LoadLevel(1);	//comment this - will load the level once the settings are good
-				}
+			if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 3 - 50, Screen.height / 2 + 50, 100, 50), "1 PLAYER")) {
+				GameSettings.Instance.players = 1;
+				start = true;
 			}
-		}
+			if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 6 - 50, Screen.height / 2 + 50, 100, 50), "2 PLAYER")) {
+				GameSettings.Instance.players = 2;
+				start = true;
+			}
+			if (GUI.Button (new Rect (Screen.width / 2 + Screen.width / 6 - 50, Screen.height / 2 + 50, 100, 50), "3 PLAYER")) {
+				GameSettings.Instance.players = 3;
+				start = true;
+			}
+			if (GUI.Button (new Rect (Screen.width / 2 + Screen.width / 3 - 50, Screen.height / 2 + 50, 100, 50), "4 PLAYER")) {
+				GameSettings.Instance.players = 4;
+				start = true;
+			}
 
-		/*
-		 * example of the game settings rules that will be used for the scope of the project 
-		if (GameSettings.Instance.two == true) {
-			GUI.contentColor = Color.blue;
-			if (GUI.Button(new Rect(Screen.width / 4 + 150, Screen.height / 2+50, 100, 50), "Player")) {
-				GameSettings.Instance.two = false;
+			GUI.contentColor = Color.red;
+			if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height / 2 + 125, 100, 50), "GO!") && start == true) {
+				GameSettings.Instance.matchSet = true;	//set this to true
+				Application.LoadLevel (1);				//comment this - will load the level once the settings are good		
 			}
 		}
-		*/
 	}
 }

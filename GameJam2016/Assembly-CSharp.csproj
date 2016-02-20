@@ -48,8 +48,15 @@
      <Compile Include="Assets\Scripts\ArrowColl.cs" />
      <Compile Include="Assets\Scripts\Attack.cs" />
      <Compile Include="Assets\Scripts\CollisionDelegate.cs" />
+     <Compile Include="Assets\Scripts\GameSettings.cs" />
+     <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\PlayerClass.cs" />
+     <Compile Include="Assets\Scripts\SelectClass.cs" />
+     <Compile Include="Assets\Scripts\SelectionScreen.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\meta_script.cs" />
+     <None Include="Assets\concept.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
