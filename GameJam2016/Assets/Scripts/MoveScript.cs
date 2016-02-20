@@ -3,11 +3,12 @@ using System.Collections;
 
 public class MoveScript : MonoBehaviour
 {
-    int max_speed = 5;
-    int move_force = 5;
+    int max_speed = 3;
+    int move_force = 10;
     Rigidbody2D r_body;
     int numOfJumpsRemaning =2;
     bool jumpPressed = false;
+    bool onFloor = false;
     // Use this for initialization
     void Start()
     {
@@ -19,7 +20,24 @@ public class MoveScript : MonoBehaviour
     {
         if (Mathf.Abs(Input.GetAxis("P1_Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
         {
+            r_body.drag = 0;
             r_body.AddForce(new Vector2(Input.GetAxis("P1_Horizontal") * move_force, 0));
+            
+            if(Input.GetAxis("P1_Horizontal")>0.1)
+            {
+                transform.eulerAngles= new Vector3(0,180,0);
+            }
+            if (Input.GetAxis("P1_Horizontal") < -0.1)
+            {
+                transform.eulerAngles = new Vector3(0, -1, 0);
+            }
+        } else
+        {
+            if (onFloor == true)
+            {
+               // r_body.drag = 10;
+            }
+
         }
         if (jumpPressed != false)
         {
@@ -27,6 +45,7 @@ public class MoveScript : MonoBehaviour
             {
                 if (numOfJumpsRemaning > 0)
                 {
+                    r_body.drag = 0;
                     jump();
                 }
 
@@ -44,6 +63,7 @@ public class MoveScript : MonoBehaviour
 
     void jump()
     {
+        r_body.drag = 0;
         r_body.velocity = new Vector2(0, 0);
         r_body.AddForce(new Vector2(0, 200));
         numOfJumpsRemaning--;
@@ -52,7 +72,16 @@ public class MoveScript : MonoBehaviour
         if(coll.gameObject.CompareTag("Floor"))
         {
             numOfJumpsRemaning = 2;
+            onFloor = true;
         }
+    }
+    void OnTriggerStay2D(Collider2D coll)
+    {
+        if(coll.gameObject.CompareTag("Floor"))
+        {
+            onFloor = true;
+        }
+
     }
     public GameObject Arrow;
     void shoot() {
