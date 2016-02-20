@@ -10,6 +10,9 @@ public class PlayerClass : MonoBehaviour {
 	buttonDelegate xMap;//mapping for x button
 	buttonDelegate yMap;//mapping for y button
 	buttonDelegate bMap;//mapping for b button
+
+    public GameObject arrow_short;
+    public GameObject arrow_long;
 	// Use this for initialization
 	void Start () {
         class_name = gameObject.tag+" ";
@@ -72,12 +75,11 @@ public class PlayerClass : MonoBehaviour {
 
 	}
 	void knight_ground(){
-
+        canPress = false;
 	}
 
 
 	void ranger_short(){
-
 	}
 	void ranger_long(){
 
