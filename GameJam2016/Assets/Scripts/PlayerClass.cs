@@ -49,11 +49,14 @@ public class PlayerClass : MonoBehaviour {
 			yMap = ranger_short;
 			bMap = ranger_long;
 		} else if (class_name.Equals ("Berserker")) {
-
+            yMap = berserk_y;
+            bMap = berserk_b;
 		} else if (class_name.Equals ("Wizard")) {
             yMap = wizard_flame;
+            bMap = wizard_b;
 		} else if (class_name.Equals ("Rogue")) {
-
+            yMap = rogue_y;
+            bMap = rogue_vanish;
 		} else {
 			print ("no valid class selected");
 		}
