@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
 
+    public GameObject Arrow;
     string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
@@ -29,11 +30,11 @@ public class PlayerClass : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (canPress) {
-            if (Input.GetButtonDown(gameObject.name + "_Fire1")) {
+            if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
                 xMap();
-            }else if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
+            }else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
                 yMap();
-            } else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
+            } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
                 bMap();
             }
         }
@@ -129,4 +130,9 @@ public class PlayerClass : MonoBehaviour {
 	void rogue_vanish(){
 
 	}
+
+    void shoot()
+    {
+        Instantiate(Arrow, transform.position, Quaternion.identity);
+    }
 }
