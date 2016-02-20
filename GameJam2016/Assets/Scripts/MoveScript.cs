@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class MoveScript : MonoBehaviour {
-    int max_speed = 3;
-    int move_force = 10;
+    public int max_speed = 3;
+    public int move_force = 10;
+    public int jump_force = 200;
+    public int max_jumps = 2;
+    int numOfJumpsRemaning;
     Rigidbody2D r_body;
-    int numOfJumpsRemaning = 2;
     bool jumpPressed = false;
     bool onFloor = false;
     bool isSleeping = false;
@@ -13,6 +15,7 @@ public class MoveScript : MonoBehaviour {
     // Use this for initialization
     void Start() {
         r_body = GetComponent<Rigidbody2D>();
+        numOfJumpsRemaning = max_jumps;
     }
 
     // Update is called once per frame
@@ -54,13 +57,13 @@ public class MoveScript : MonoBehaviour {
         Vector2 tmp = r_body.velocity;
         tmp.y = 0;
         r_body.velocity = tmp;
-        r_body.AddForce(new Vector2(0, 200));
+        r_body.AddForce(new Vector2(0, jump_force));
         numOfJumpsRemaning--;
     }
     void OnTriggerEnter2D(Collider2D coll) {
         if (coll.gameObject.CompareTag("Floor")) {
 
-            numOfJumpsRemaning = 2;
+            numOfJumpsRemaning = max_jumps;
             onFloor = true;
         }
     }
