@@ -40,7 +40,6 @@ public class PlayerClass : MonoBehaviour {
     }
 
 	void setMapping(){
-		string player = gameObject.name;
 		xMap = attack;
 		if (class_name.Equals ("Knight")) {
 			yMap = knight_ground;
@@ -58,7 +57,8 @@ public class PlayerClass : MonoBehaviour {
             yMap = rogue_y;
             bMap = rogue_vanish;
 		} else {
-			print ("no valid class selected");
+            print("No class selected removed player");
+            Destroy(gameObject);
 		}
 
 	}
