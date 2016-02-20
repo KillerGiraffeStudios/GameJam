@@ -4,7 +4,8 @@ using System.Collections;
 public class PlayerClass : MonoBehaviour {
 
     string class_name;
-    delegate void class_delegate();
+    delegate void buttonDelegate();
+	buttonDelegate bMap;
 	// Use this for initialization
 	void Start () {
         class_name = gameObject.tag+" ";
@@ -18,4 +19,31 @@ public class PlayerClass : MonoBehaviour {
     public string getName() {
         return class_name;
     }
+
+	void setMapping(){
+		if (class_name.Equals ("Knight")) {
+			
+		}
+
+
+
+
+
+
+
+		if(class_name.Equals("Ranger")){
+
+		}
+
+
+
+
+
+
+
+		if (class_name.Equals ("Berserker")) {
+
+		}
+
+	}
 }

@@ -3,8 +3,8 @@ using System.Collections;
 
 public class MoveScript : MonoBehaviour
 {
-    int max_speed = 5;
-    int move_force = 5;
+    int max_speed = 3;
+    int move_force = 10;
     Rigidbody2D r_body;
     int numOfJumpsRemaning =2;
     bool jumpPressed = false;
@@ -21,6 +21,7 @@ public class MoveScript : MonoBehaviour
         {
             r_body.AddForce(new Vector2(Input.GetAxis("P1_Horizontal") * move_force, 0));
         }
+
         if (jumpPressed != false)
         {
             if (Input.GetButtonDown("P1_Fire1"))
@@ -44,7 +45,9 @@ public class MoveScript : MonoBehaviour
 
     void jump()
     {
-        r_body.velocity = new Vector2(0, 0);
+		Vector2 tmp = r_body.velocity;
+		tmp.y = 0;
+		r_body.velocity = tmp;
         r_body.AddForce(new Vector2(0, 200));
         numOfJumpsRemaning--;
     }
