@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ArrowColl : MonoBehaviour {
     float launch_force = 50;
+    public int arrow_damage = 10;
     Rigidbody2D r_body;
 
 	// Use this for initialization
@@ -13,7 +14,8 @@ public class ArrowColl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        //rotates arrow according to its velocity
+        transform.rotation.eulerAngles.Set(0,0,Mathf.Cos( r_body.velocity.y/ r_body.velocity.x));
 	}
 
     void OnTriggerEnter2D(Collider2D coll) {
@@ -24,7 +26,7 @@ public class ArrowColl : MonoBehaviour {
         } else if (coll.tag.Equals("Ranged")) {//Hits another arrow
             //do nothing
         } else {//send damage message to hit thing and destroy instantly
-            coll.SendMessage("damage", 10);
+            coll.SendMessage("damage", arrow_damage);
             DestroySelf();
         }
     }
