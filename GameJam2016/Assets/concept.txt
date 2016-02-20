@@ -1,0 +1,64 @@
+Game Jam - February 2016
+Members: Darvin Zhang, Erik Lindsay, Alex Russell, Will Revel, Thomas Klimaszewski
+
+Name: CyberBlitz
+
+Description:
+Potentially a 4 man fighting game based off of smash brothers. The kick is that there are 5 classes
+which each counter and are countered by other classes. Additionally, each player does not know which
+class eachother has chosen.
+
+Must have:
++ atleast 3 classes and a basic game (3 classes are Mage, Knight, Ranger)
++ make sure it is fun
+
+Milestones:
++ adding team mode
++ adding CPU 
++ changing the game for a robot theme
+
+Classes: Knight, Assassin, Ranger, Berserker, Wizard
+
+Knight:
+ - Good against Assassin and Ranger
+ - Bad against Wizard and Berserker 
+ - Contains a shield that will block all damage in the incoming direction
+      - Blocks arrows and percent damage from melee classes
+ - Special: Has a charge move?
+
+Berserker:
+ - Good against Knight and Assassin
+ - Bad against Wizard and Ranger
+ - Only class without a dodge or damage reduction
+      - However, can pay health to increase damage and attackspeed (ignore knight armor?)
+ - Special: Has a earthquake or leap or bladestorm 
+
+Ranger:
+ - Good against Wizard and Berserker
+ - Bad against Knight and Assassin
+ - Ranged class with quick light arrow attacks
+ - Triple jump and roll ability?
+ - Quick shot or draw and shoot?
+ - Special: Rain a hailstorm of arrows at target location
+
+Wizard:
+ - Good against Knight and Berserker
+ - Bad against Ranger and Assassin
+ - Softest class in the game, but has a shield ability to absorb damage
+ - Teleport?
+ - Special: Supernova - Explosion that damages and knocks back opponents
+            or a giant fireball that slowly travels through the map
+
+Assassin:
+ - Good against Ranger and Wizard
+ - Bad against Knight and Berserker
+ - Quickest class (2nd Softest), triple jump?
+ - Defensive ability that dodges all range attacks (also melee damage?)
+ - A stealth mode?
+ - Special: Shadowstep or some backstab type ability that does massive damage
+
+Map:
++ The map will encompass like a battlefield (unsure at this moment if they can go from side to side) that does not change
++ There will be no rematch
++ Quick rematch setting will be available
++ Round countdown with respawn invincibility
