@@ -21,6 +21,8 @@ public class ArrowColl : MonoBehaviour {
             Destroy(GetComponent<Collider2D>());
             Destroy(GetComponent<Rigidbody2D>());
             Invoke("DestroySelf", 10f);
+        } else if (coll.tag.Equals("Ranged")) {
+            //do nothing
         } else {
             coll.SendMessage("damage", 10);
             DestroySelf();
