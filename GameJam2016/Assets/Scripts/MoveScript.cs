@@ -42,10 +42,6 @@ public class MoveScript : MonoBehaviour {
             {
                 jumpPressed = true;
             }
-            if (Input.GetButtonDown(gameObject.name + "_Fire2"))
-            {
-                shoot();
-            }
         }
     }
     
@@ -72,11 +68,7 @@ public class MoveScript : MonoBehaviour {
         }
 
     }
-    public GameObject Arrow;
-    void shoot()
-    {
-        Instantiate(Arrow, transform.position, Quaternion.identity);
-    }
+
 
     void sleep(float time)
     {

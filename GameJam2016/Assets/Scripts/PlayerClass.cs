@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
 
-    public GameObject Arrow;
     string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
@@ -97,10 +96,22 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void ranger_short(){
-	}
-	void ranger_long(){
+        Vector3 playerPos = transform.position;
+        Vector3 playerDirection = transform.forward;
+        Quaternion playerRotation = transform.rotation;
+        float spawnDistance = 30;
+        Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
+        Instantiate(arrow_short, spawnPos, playerRotation);
 
-	}
+    }
+	void ranger_long(){
+        Vector3 playerPos = transform.position;
+        Vector3 playerDirection = transform.forward;
+        Quaternion playerRotation = transform.rotation;
+        float spawnDistance = 30;
+        Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
+        Instantiate(arrow_long, spawnPos, playerRotation);
+    }
 
 
 
@@ -133,6 +144,6 @@ public class PlayerClass : MonoBehaviour {
 
     void shoot()
     {
-        Instantiate(Arrow, transform.position, Quaternion.identity);
+
     }
 }
