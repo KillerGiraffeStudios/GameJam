@@ -13,6 +13,7 @@ public class PlayerClass : MonoBehaviour {
 
     public GameObject arrow_short;
     public GameObject arrow_long;
+    public int health;
 	// Use this for initialization
 	void Start () {
         class_name = gameObject.tag+" ";
@@ -47,25 +48,40 @@ public class PlayerClass : MonoBehaviour {
 		if (class_name.Equals ("Knight")) {
 			yMap = knight_ground;
 			bMap = knight_block;
+            health = 200;
 		} else if (class_name.Equals ("Ranger")) {
 			yMap = ranger_short;
 			bMap = ranger_long;
-		} else if (class_name.Equals ("Berserker")) {
+            health = 200;
+        } else if (class_name.Equals ("Berserker")) {
             yMap = berserk_y;
             bMap = berserk_b;
-		} else if (class_name.Equals ("Wizard")) {
+            health = 200;
+        } else if (class_name.Equals ("Wizard")) {
             yMap = wizard_flame;
             bMap = wizard_b;
-		} else if (class_name.Equals ("Rogue")) {
+            health = 200;
+        } else if (class_name.Equals ("Rogue")) {
             yMap = rogue_y;
             bMap = rogue_vanish;
-		} else {
+            health = 200;
+        } else {
             print("No class selected removed player");
             Destroy(gameObject);
 		}
 
 	}
 
+    void damage(int dmg) {
+        health -= dmg;
+        if (health <= 0) {
+            death();
+        }
+    }
+    void death() {
+        Destroy(gameObject.GetComponent<Collider2D>());
+        Destroy(gameObject.GetComponent<SpriteRenderer>());
+    }
 	void attack(){
 
 	}
