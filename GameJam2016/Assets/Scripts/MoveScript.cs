@@ -40,17 +40,14 @@ public class MoveScript : MonoBehaviour
 
     void jump()
     {
-        r_body.AddForce(new Vector2(0, 325));
+        r_body.velocity = new Vector2(0, 0);
+        r_body.AddForce(new Vector2(0, 200));
         numOfJumpsRemaning--;
     }
-
-    void OnCollisionEnter2D(Collision2D coll) {
+    void OnTriggerEnter2D(Collider2D coll) {
         if(coll.gameObject.CompareTag("Floor"))
         {
             numOfJumpsRemaning = 2;
         }
-
     }
-
-
 }
