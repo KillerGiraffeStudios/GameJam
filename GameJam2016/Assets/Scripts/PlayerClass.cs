@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerClass : MonoBehaviour {
 
     string class_name;
-    bool canPress = true;;
+    bool canPress = true;
     delegate void buttonDelegate();
 	//Based on xbox controller
 	buttonDelegate xMap;//mapping for x button
