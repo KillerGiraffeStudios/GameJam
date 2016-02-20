@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour {
 	bool ShowButton = true;
 
 	//boolean set true if the game settings have been confirmed
-	bool start = true;
+	bool start = false;
 
 	void Start() {
 	}
@@ -29,7 +29,6 @@ public class Menu : MonoBehaviour {
 		GUI.skin.button.fontSize = 15;
 		GUI.contentColor = Color.black;
 
-
 		if (ShowButton) {
 			if (GUI.Button(new Rect(Screen.width/2 - 50 , Screen.height /2 + 50, 100, 100), "START")) {
 				ShowButton = false;
@@ -38,11 +37,26 @@ public class Menu : MonoBehaviour {
 
 		//once the start game button has been selected - do this
 		if (!ShowButton) {
-			if (start) {
-				GUI.contentColor = Color.red;
-				if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 125, 100, 50), "GO!")) {
-					//Application.LoadLevel(1);	//comment this - will load the level once the settings are good
-				}
+			if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 3  - 50, Screen.height / 2 + 50, 100, 50), "1 PLAYER")) {
+				GameSettings.Instance.players = 1;
+				start = true;
+			}
+			if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 6 - 50, Screen.height / 2 + 50, 100, 50), "2 PLAYER")) {
+				GameSettings.Instance.players = 2;
+				start = true;
+			}
+			if (GUI.Button (new Rect (Screen.width / 2 + Screen.width / 6 - 50, Screen.height / 2 + 50, 100, 50), "3 PLAYER")) {
+				GameSettings.Instance.players = 3;
+				start = true;
+			}
+			if (GUI.Button (new Rect (Screen.width / 2 + Screen.width / 3 - 50, Screen.height / 2 + 50, 100, 50), "4 PLAYER")) {
+				GameSettings.Instance.players = 4;
+				start = true;
+			}
+
+			GUI.contentColor = Color.red;
+			if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 125, 100, 50), "GO!") && start == true) {
+				//Application.LoadLevel(1);	//comment this - will load the level once the settings are good		
 			}
 		}
 
