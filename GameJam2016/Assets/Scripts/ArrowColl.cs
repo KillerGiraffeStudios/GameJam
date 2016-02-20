@@ -15,7 +15,9 @@ public class ArrowColl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //rotates arrow according to its velocity
-        transform.rotation.eulerAngles.Set(0,0,Mathf.Cos( r_body.velocity.y/ r_body.velocity.x));
+        if(r_body!= null) {
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Cos(r_body.velocity.y / r_body.velocity.x) * 90 / Mathf.PI);
+        }
 	}
 
     void OnTriggerEnter2D(Collider2D coll) {
