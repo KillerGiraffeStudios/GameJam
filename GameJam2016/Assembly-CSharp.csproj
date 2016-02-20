@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArrowColl.cs" />
      <Compile Include="Assets\Scripts\Attack.cs" />
+     <Compile Include="Assets\Scripts\AttackTrigger.cs" />
      <Compile Include="Assets\Scripts\CollisionDelegate.cs" />
      <Compile Include="Assets\Scripts\GameSettings.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
