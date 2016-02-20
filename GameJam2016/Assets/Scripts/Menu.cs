@@ -41,7 +41,8 @@ public class Menu : MonoBehaviour {
 			if (start) {
 				GUI.contentColor = Color.red;
 				if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 125, 100, 50), "GO!")) {
-					//Application.LoadLevel(1);	//comment this - will load the level once the settings are good
+					GameSettings.Instance.matchSet = true;	//set the match variable in the game settings
+					Application.LoadLevel(1);	//will load the match screen when done
 				}
 			}
 		}

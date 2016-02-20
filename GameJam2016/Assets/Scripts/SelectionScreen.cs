@@ -5,11 +5,22 @@ public class SelectionScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
-	
+
+	string thing = "";
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.anyKey) {
+		thing = Input.inputString;
+			Debug.Log (gameObject.name);
+		}
+		if (thing == "e") {
+			Debug.Log ("test");
+		}
 	}
+
+	void updateObject() {
+
+	}
+
 }
