@@ -19,6 +19,8 @@ public class SelectionScreen : MonoBehaviour {
 		}
 		if(Timer.isDone == true) {
 			Debug.Log ("Finished");
+			Timer.isDone = false;
+			Timer.reset();
 		}
 	}
 

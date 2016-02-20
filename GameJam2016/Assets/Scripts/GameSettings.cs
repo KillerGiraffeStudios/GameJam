@@ -37,7 +37,7 @@ public class GameSettings : MonoBehaviour {
 	void Update () {
 		if (matchSet == true) {
 			//playerAmount = new GameObject[players];	//create the amount of players in the game
-			matchSet = false;						//set false so we do not loop anymore
+			matchSet = false;							//set false so we do not loop anymore
 		}
 	}
 }
