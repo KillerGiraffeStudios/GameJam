@@ -4,16 +4,14 @@ using System.Collections;
 
 public class Menu : MonoBehaviour {
 
-	public Texture buttonTexture;
-	public Texture2D icon;
 	//boolean to remove button once clicked
-	bool ShowButton = true;
+	public bool ShowButton = true;
 
 	//boolean set true if the game settings have been confirmed
-	bool canStart = false;
+	public bool canStart = false;
 
 	//the texture of our buttons
-	Texture2D p1, p2, p3, p4, p1c, p2c, p3c, p4c, start, create;
+	public Texture2D p1, p2, p3, p4, p1c, p2c, p3c, p4c, start, create;
 
 	//initialize all fancy GUI
 	void Start() {
