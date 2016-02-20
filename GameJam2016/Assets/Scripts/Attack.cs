@@ -4,15 +4,16 @@ using System.Collections;
 public class Attack : MonoBehaviour {
 
     private bool attacking = false;
+    private bool blocking = true;
+    private float blockingTimer = 0f;
+    private float blockCd = 2f;
 
-    private float attackTimer = 0;
+    private float attackTimer = 0f;
     private float attackCd = 0.3f;
     public Collider2D attackTrigger;
+    public Collider2D blockTrigger;
 
     private Animator anim;
-
-
-
 
     public GameObject Block;
 
@@ -20,25 +21,44 @@ public class Attack : MonoBehaviour {
 	void Awake () {
         anim = gameObject.GetComponent<Animator>();
         attackTrigger.enabled = false;
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        //Block
-        if(Input.GetButtonDown(gameObject.name+"_Fire3"))
+        if (attackTimer > 0)
         {
-            Vector3 playerPos = transform.position;
-            Vector3 playerDirection = transform.forward;
-            Quaternion playerRotation = transform.rotation;
-            float spawnDistance = 45;
-            Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
+            attackTimer -= Time.deltaTime;
+        }
+        if(blockingTimer >0)
+        {
+            blockingTimer -= Time.deltaTime;
+        }
+    }
 
-            Instantiate(Block, spawnPos, playerRotation);
+    void block()
+    {
+        if(!blocking)
+        {
+            blocking = true;
+            attackTimer = blockCd;
+
+            blockTrigger.enabled = true;
         }
 
-        // Attack Animations
-        if(Input.GetButtonDown(gameObject.name+"_Fire4")&& !attacking) 
+        if(blocking)
+        {
+            if(blockingTimer>0)
+            {
+                gameObject.GetComponent<PlayerClass>().SendMessage("sleep", 0.3f);
+                gameObject.GetComponent<MoveScript>().SendMessage("sleep", 0.3f);
+                Invoke("finishBlock", 0.3f);
+            }
+        }
+    }
+
+    void basicAttack()
+    {
+        if (!attacking)
         {
             attacking = true;
             attackTimer = attackCd;
@@ -46,19 +66,32 @@ public class Attack : MonoBehaviour {
             attackTrigger.enabled = true;
         }
 
-        if(attacking)
+        if (attacking)
         {
             if (attackTimer > 0)
             {
-                attackTimer -= Time.deltaTime;
-            }
-            else
-            {
-                attacking = false;
-                attackTrigger.enabled = false;
+                gameObject.GetComponent<PlayerClass>().SendMessage("sleep", 0.3f);
+                gameObject.GetComponent<MoveScript>().SendMessage("sleep", 0.3f);
+                Invoke("finishAttack", 0.3f);
             }
         }
-	}
+    }
+
+    void finishAttack()
+    {
+        attacking = false;
+        attackTrigger.enabled = false;
+    }
+
+    void finishBlock() {
+        blocking = false;
+        blockTrigger.enabled = false;
+    }
+
+    void destroySelf()
+    {
+        Destroy(gameObject);
+    }
 
 
 }

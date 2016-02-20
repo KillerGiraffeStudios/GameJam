@@ -6,9 +6,11 @@ public class MoveScript : MonoBehaviour
     int max_speed = 3;
     int move_force = 10;
     Rigidbody2D r_body;
-    int numOfJumpsRemaning =2;
+    int numOfJumpsRemaning = 2;
     bool jumpPressed = false;
     bool onFloor = false;
+    bool isSleeping = false;
+
     // Use this for initialization
     void Start()
     {
@@ -18,46 +20,50 @@ public class MoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(Input.GetAxis(gameObject.name+"_Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
+        if (!isSleeping)
         {
-            r_body.drag = 0;
-            r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal") * move_force, 0));
-            
-            if(Input.GetAxis(gameObject.name + "_Horizontal") >0.1)
+            if (Mathf.Abs(Input.GetAxis(gameObject.name + "_Horizontal")) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed)
             {
-                transform.eulerAngles= new Vector3(0,180,0);
-            }
-            if (Input.GetAxis(gameObject.name + "_Horizontal") < -0.1)
-            {
-                transform.eulerAngles = new Vector3(0, -1, 0);
-            }
-        } else
-        {
-            if (onFloor == true)
-            {
-               // r_body.drag = 10;
-            }
-
-        }
-        if (jumpPressed != false)
-        {
-            if (Input.GetButtonDown(gameObject.name + "_Fire1"))
-            {
-                if (numOfJumpsRemaning > 0)
+                r_body.drag = 0;
+                r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal") * move_force, 0));
+                //flip to face the right direction
+                if (Input.GetAxis(gameObject.name + "_Horizontal") > 0.1)
                 {
-                    r_body.drag = 0;
-                    jump();
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                }
+                if (Input.GetAxis(gameObject.name + "_Horizontal") < -0.1)
+                {
+                    transform.eulerAngles = new Vector3(0, -1, 0);
+                }
+            }
+            else
+            {
+                if (onFloor == true)
+                {
+                    // r_body.drag = 10;
                 }
 
             }
-        }
-        if(Input.GetButtonUp(gameObject.name + "_Fire1"))
-        {
-            jumpPressed = true;
-        }
-        if(Input.GetButtonDown(gameObject.name + "_Fire2"))
-        {
-            shoot();
+            if (jumpPressed != false)
+            {
+                if (Input.GetButtonDown(gameObject.name + "_Fire1"))
+                {
+                    if (numOfJumpsRemaning > 0)
+                    {
+                        r_body.drag = 0;
+                        jump();
+                    }
+
+                }
+            }
+            if (Input.GetButtonUp(gameObject.name + "_Fire1"))
+            {
+                jumpPressed = true;
+            }
+            if (Input.GetButtonDown(gameObject.name + "_Fire2"))
+            {
+                shoot();
+            }
         }
     }
 
@@ -68,8 +74,9 @@ public class MoveScript : MonoBehaviour
         r_body.AddForce(new Vector2(0, 200));
         numOfJumpsRemaning--;
     }
-    void OnTriggerEnter2D(Collider2D coll) {
-        if(coll.gameObject.CompareTag("Floor"))
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.CompareTag("Floor"))
         {
             numOfJumpsRemaning = 2;
             onFloor = true;
@@ -77,16 +84,26 @@ public class MoveScript : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D coll)
     {
-        if(coll.gameObject.CompareTag("Floor"))
+        if (coll.gameObject.CompareTag("Floor"))
         {
             onFloor = true;
         }
 
     }
     public GameObject Arrow;
-    void shoot() {
+    void shoot()
+    {
         Instantiate(Arrow, transform.position, Quaternion.identity);
+    }
 
+    void sleep(float time)
+    {
+        isSleeping = true;
+        Invoke("notSleeping", time);
+    }
+    void notBlocking()
+    {
+        isSleeping = false;
     }
 
 }
