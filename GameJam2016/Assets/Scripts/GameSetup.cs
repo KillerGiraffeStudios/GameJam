@@ -6,7 +6,13 @@ public class GameSetup : MonoBehaviour {
     enum PlayerClasses { Empty, Knight, Ranger, Berserker, Rogue, Wizard, Random }
     int determineClass = 0;
 
+	//the variables to check if game has ended 
+	public bool isEnd = false;
+	public static double timer = 3.0;
+	public string winner;
+
     private bool matchStart = false;
+
     GameObject[] Players;
     System.Random rand= new System.Random();
     
@@ -20,6 +26,14 @@ public class GameSetup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(isEnd == true) {
+			timer -= Time.deltaTime;
+			if(timer <= 0) {
+				Destroy(GameObject.Find("GameSettings"));
+				Application.LoadLevel (0);
+			}
+		}
+		hasEnded ();
     }
 
     void matchReady()
@@ -75,5 +89,31 @@ public class GameSetup : MonoBehaviour {
         
         }
     }
+
+	void OnGUI() {
+		if(isEnd == true) {
+			var style = new GUIStyle("label");
+			style.fontSize = 30;
+			GUI.backgroundColor = Color.clear;
+			GUI.color = Color.red; 
+			GUI.Box(new Rect(Screen.width/2 - Screen.width/20, Screen.height /20, Screen.width/10, Screen.height/10), "THE WINNER IS: " + winner, style);
+		}
+	}
+
+	//function to check if there is only one winner left in the battlefield
+	void hasEnded() {
+		int j = 0;
+		for(int i = 0; i < Players.Length; i++) {
+			if (Players[i] != null) {
+				winner = Players [i].name;
+			}
+			if(Players[i] == null) {
+				j++;
+			}
+		}
+		if(j == 1) {
+			isEnd = true;
+		}
+	}
 
 }

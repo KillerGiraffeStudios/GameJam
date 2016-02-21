@@ -12,11 +12,13 @@ public class MoveScript : MonoBehaviour {
     bool jumpPressed = false;
     bool onFloor = false;
     bool isSleeping = false;
+	Animator anim;
 
     // Use this for initialization
     void Start() {
         r_body = GetComponent<Rigidbody2D>();
         numOfJumpsRemaning = max_jumps;
+		anim.GetComponent<Animator> ();
     }
 
     // Update is called once per frame
@@ -25,6 +27,7 @@ public class MoveScript : MonoBehaviour {
         if (!isSleeping)
         {
             float h = Input.GetAxis(gameObject.name + "_Horizontal");
+			anim.SetFloat("Speed",Mathf.Abs(r_body.velocity.x));
             if (Mathf.Abs(h) > 0.15 && Mathf.Abs(r_body.velocity.x) < max_speed) {
                 if(h>0.15)
                 {
