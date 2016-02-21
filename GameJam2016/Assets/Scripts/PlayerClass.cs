@@ -34,10 +34,13 @@ public class PlayerClass : MonoBehaviour {
 	void Update () {
         if (canPress) {
             if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
+				anim.SetTrigger ("Attacking");
                 xMap();
             }else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
+				anim.SetTrigger ("Special");
                 yMap();
             } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
+				anim.SetTrigger ("Block");
                 bMap();
             }
         }
@@ -112,7 +115,6 @@ public class PlayerClass : MonoBehaviour {
     }
 	void attack(){
         GetComponent<Attack>().basicAttack();
-        anim.SetTrigger("Attacking");
 	}
 
 
