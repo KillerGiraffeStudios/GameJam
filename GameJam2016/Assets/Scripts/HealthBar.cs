@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour {
 		pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x - 1, transform.position.y + 1, transform.position.z));
 		pos.y = Screen.height - pos.y;
 		//check if any damage has been done, if so, reduce hp
-		curHP = GetComponent<PlayerClass>().health;  --uncomment this for hp going down
+		curHP = GetComponent<PlayerClass>().health; 
 		percentOfHP = curHP / maxHP;
 	}
 
