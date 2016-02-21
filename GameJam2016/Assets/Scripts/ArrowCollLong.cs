@@ -23,6 +23,7 @@ public class ArrowCollLong : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        print(coll.ToString());
         if (coll.tag.Equals("Floor"))
         {//Sticks to floor and destroys itself later
             Destroy(GetComponent<Collider2D>());
