@@ -23,7 +23,8 @@ public class SelectionScreen : MonoBehaviour {
 		if(Timer.isDone == true) {
 			Debug.Log ("Finished");
 			Timer.isDone = false;
-            SceneManager.LoadScene(2);
+            System.Random rand = new System.Random();
+            SceneManager.LoadScene(rand.Next(2,4));
 		}
 	}
 
