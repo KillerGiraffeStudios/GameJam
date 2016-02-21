@@ -116,7 +116,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void knight_block(){
-
+        GetComponent<Attack>().block();
 	}
 	void knight_ground(){
         canPress = false;

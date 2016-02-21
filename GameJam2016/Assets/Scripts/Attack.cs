@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour {
         }
     }
 
-    void block()
+    public void block()
     {
         if(!blocking)
         {
