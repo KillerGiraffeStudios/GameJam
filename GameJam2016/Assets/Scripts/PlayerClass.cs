@@ -4,8 +4,6 @@ using UnityEditor;
 
 public class PlayerClass : MonoBehaviour {
 
-
-
     public string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
