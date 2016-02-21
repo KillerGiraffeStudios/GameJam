@@ -161,7 +161,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void berserk_y(){
-
+		GetComponent<Kick> ().activate();
 	}
 	void berserk_b(){
 
@@ -171,7 +171,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void wizard_flame(){
-
+		GetComponent<Flame> ().activate ();
 	}
 	void wizard_b(){
 

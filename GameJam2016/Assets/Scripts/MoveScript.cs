@@ -30,9 +30,9 @@ public class MoveScript : MonoBehaviour {
 		//Animations
 		anim.SetFloat ("Speed", Mathf.Abs (r_body.velocity.x));
 		if (Mathf.Abs (r_body.velocity.y) > 0) {
-			anim.SetBool("jumping", true);
+			anim.SetBool("Jumping", true);
 		} else {
-			anim.SetBool("jumping", false);
+			anim.SetBool("Jumping", false);
 		}
 
         if (!isSleeping)
