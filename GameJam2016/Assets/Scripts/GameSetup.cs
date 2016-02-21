@@ -26,14 +26,16 @@ public class GameSetup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(isEnd == true) {
+		if (isEnd == true) {
 			timer -= Time.deltaTime;
-			if(timer <= 0) {
-				Destroy(GameObject.Find("GameSettings"));
+			if (timer <= 0) {
+				Destroy (GameObject.Find ("GameSettings"));
+				timer = 3.0;
 				Application.LoadLevel (0);
 			}
+		} else {
+			hasEnded ();
 		}
-		hasEnded ();
     }
 
     void matchReady()
@@ -96,7 +98,7 @@ public class GameSetup : MonoBehaviour {
 			style.fontSize = 30;
 			GUI.backgroundColor = Color.clear;
 			GUI.color = Color.red; 
-			GUI.Box(new Rect(Screen.width/2 - Screen.width/20, Screen.height /20, Screen.width/10, Screen.height/10), "THE WINNER IS: " + winner, style);
+			GUI.Box(new Rect(Screen.width/2 - Screen.width / 6, Screen.height / 3, Screen.width/3, Screen.height/10), "THE WINNER IS: " + winner, style);
 		}
 	}
 
@@ -105,11 +107,13 @@ public class GameSetup : MonoBehaviour {
 		int j = 0;
 		for(int i = 0; i < Players.Length; i++) {
 			if (Players[i] != null) {
-				winner = Players [i].name;
-			}
-			if(Players[i] == null) {
+				winner = Players[i].name;
+				print ("I'm alive");
 				j++;
 			}
+			if (Players [i] == null) {
+				print ("I'm dead");
+			} 
 		}
 		if(j == 1) {
 			isEnd = true;

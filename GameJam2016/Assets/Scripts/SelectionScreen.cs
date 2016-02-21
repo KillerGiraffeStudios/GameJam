@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class SelectionScreen : MonoBehaviour {
 
 	public Texture info;
+	public bool time = false;
 
 	// Use this for initialization
 	void Start () {
@@ -14,6 +15,10 @@ public class SelectionScreen : MonoBehaviour {
 	string thing = "";
 	// Update is called once per frame
 	void Update () {
+		if (time == false) {
+			Timer.reset ();
+			time = true;
+		}
 		checkButtons (GameSettings.Instance.playerAmount);
 		if(Timer.isDone == true) {
 			Debug.Log ("Finished");
