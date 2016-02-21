@@ -24,7 +24,7 @@ public class MoveScript : MonoBehaviour {
         if (!isSleeping)
         {
             float h = Input.GetAxis(gameObject.name + "_Horizontal");
-            if (Mathf.Abs(h) > 0.1 && Mathf.Abs(r_body.velocity.x) < max_speed) {
+            if (Mathf.Abs(h) > 0.15 && Mathf.Abs(r_body.velocity.x) < max_speed) {
                 r_body.AddForce(new Vector2(h * move_force, 0));
             }
             if (jumpPressed == true) {
@@ -56,7 +56,17 @@ public class MoveScript : MonoBehaviour {
         Vector2 tmp = r_body.velocity;
         tmp.y = 0;
         r_body.velocity = tmp;
-        r_body.AddForce(new Vector2(0, jump_force));
+        if(r_body.velocity.x*Input.GetAxis(gameObject.name+"_Horizontal")<0)
+        {
+            Vector2 tmp2 = r_body.velocity;
+            tmp2.x = 0;
+            r_body.velocity = tmp2;
+            r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal")*move_force, jump_force));
+        } else
+        {
+                    r_body.AddForce(new Vector2(0, jump_force));
+        }
+
         numOfJumpsRemaning--;
     }
     void OnTriggerEnter2D(Collider2D coll) {
