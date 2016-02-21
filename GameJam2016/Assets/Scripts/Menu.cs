@@ -11,11 +11,12 @@ public class Menu : MonoBehaviour {
 	public bool canStart = false;
 
 	//the texture of our buttons
-	public Texture2D p1, p2, p3, p4, p1c, p2c, p3c, p4c, start, create;
+	public Texture2D p1, p2, p3, p4, p1c, p2c, p3c, p4c, start, create, title;
 
 	//initialize all fancy GUI
 	void Start() {
 		//load the button textures to assign to our buttons
+		title = Resources.Load ("Title") as Texture2D;
 		p1 = Resources.Load ("OnePlayer") as Texture2D;
 		p2 = Resources.Load ("TwoPlayer") as Texture2D;
 		p3 = Resources.Load ("ThreePlayer") as Texture2D;
@@ -47,6 +48,8 @@ public class Menu : MonoBehaviour {
 	void OnGUI () {
 		//set no background to the button
 		GUI.backgroundColor = Color.clear;
+
+		GUI.Box (new Rect (Screen.width / 2 - 300, Screen.height / 2 - 200, 600, 300), title);
 
 		if (ShowButton) {
 			if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 50, 200, 100), start)) {
@@ -80,7 +83,7 @@ public class Menu : MonoBehaviour {
 				p4 = p4c;
 				canStart = true;
 			}
-			if (GUI.Button (new Rect (Screen.width / 2 - 75, Screen.height / 2 + 90, 150, 75), create) && canStart == true) {
+			if (GUI.Button (new Rect (Screen.width / 2 - 75, Screen.height / 2 + 200, 150, 75), create) && canStart == true) {
 				GameSettings.Instance.matchSet = true;	//set this to true
 				resetColors ();							//make sure that everything is reset
 				canStart = false;						//reset the match settings for new game
