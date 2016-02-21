@@ -7,8 +7,11 @@ public class AttackTrigger : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.isTrigger !=true && col.CompareTag("Player")) {
+        print(col.ToString());
+        //TODO: check if isTrigger is needed
+        if(/*col.isTrigger !=true &&*/ col.gameObject.CompareTag("Player")) {
             col.SendMessage("damage", dmg);
+            print(col.ToString()+"inside");
         }
     }
 

@@ -33,7 +33,7 @@ public class GameSetup : MonoBehaviour {
             if (y.ToString().Equals("Random"))
             {
                 determineClass = rand.Next(0, 101);
-                if(determineClass>80)
+                if(determineClass>80)   
                 {
                     x[i] = 5;
                 } else if(determineClass>60)
@@ -55,7 +55,9 @@ public class GameSetup : MonoBehaviour {
                     x[i] = 1;
                 }
             }
+
             y = (PlayerClasses)x[i];
+            print(y.ToString());
             Players[i].GetComponent<PlayerClass>().setName(y.ToString());
         
         }

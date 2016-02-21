@@ -21,7 +21,6 @@ public class PlayerClass : MonoBehaviour {
         //see setname, Gets info from Game Setup Script
         //class_name = gameObject.tag+" ";
         anim = gameObject.GetComponent<Animator>();
-        setMapping();
         
 	}
 	
@@ -59,27 +58,32 @@ public class PlayerClass : MonoBehaviour {
 	void setMapping(){
 		xMap = attack;
 		if (class_name.Equals ("Knight")) {
+            print("1");
             yMap = knight_ground;
 			bMap = knight_block;
             health = 200;
             gameObject.GetComponentInChildren<AttackTrigger>().dmg = 20;
 		} else if (class_name.Equals ("Ranger")) {
-			yMap = ranger_short;
+            print("2");
+            yMap = ranger_short;
 			bMap = ranger_long;
             health = 200;
         } else if (class_name.Equals ("Berserker")) {
+            print("3");
             yMap = berserk_y;
             bMap = berserk_b;
             health = 200;
         } else if (class_name.Equals ("Wizard")) {
+            print("4");
             yMap = wizard_flame;
             bMap = wizard_b;
             health = 200;
         } else if (class_name.Equals ("Rogue")) {
+            print("5");
             yMap = rogue_y;
             bMap = rogue_vanish;
             health = 200;
-        } else {
+        } else if(class_name.Equals("Empty")) {
             print("No class selected removed player");
             Destroy(gameObject);
 		}
@@ -89,6 +93,7 @@ public class PlayerClass : MonoBehaviour {
 
     void damage(int dmg) {
         health -= dmg;
+        print(health);
         if (health <= 0) {
             anim.SetBool("Death", true);
             Invoke("death",1f);
