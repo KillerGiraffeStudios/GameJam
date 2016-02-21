@@ -17,7 +17,6 @@ GameJam2016/GameJam2016.CSharp.csproj
 *.suo
 *.user
 *.userprefs
-*.meta
 *.unityproj
 *.booproj
 *.pidb
