@@ -6,6 +6,7 @@ public class MoveScript : MonoBehaviour {
     public int move_force = 10;
     public int max_jumps = 2;
     public int jump_force = 200;
+    public bool facingLeft;
     Rigidbody2D r_body;
     int numOfJumpsRemaning;
     bool jumpPressed = false;
@@ -25,7 +26,15 @@ public class MoveScript : MonoBehaviour {
         {
             float h = Input.GetAxis(gameObject.name + "_Horizontal");
             if (Mathf.Abs(h) > 0.15 && Mathf.Abs(r_body.velocity.x) < max_speed) {
+                if(h>0.15)
+                {
+                    facingLeft = false;
+                } else
+                {
+                    facingLeft = true;
+                }
                 r_body.AddForce(new Vector2(h * move_force, 0));
+                //gameObject.GetComponent<PlayerClass>().SendMessage("run");
             }
             if (jumpPressed == true) {
                 if (Input.GetButtonDown(gameObject.name + "_Fire1")) {

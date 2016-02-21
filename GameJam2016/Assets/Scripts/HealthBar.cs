@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//move the health bar to the object
-		pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x - 1, transform.position.y + 1, transform.position.z));
+		pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + 1, transform.position.z));
 		pos.y = Screen.height - pos.y;
 		//check if any damage has been done, if so, reduce hp
 		curHP = GetComponent<PlayerClass>().health; 
@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour {
 
 	void OnGUI(){
 		if (curHP > 0) {
-			GUI.DrawTexture(new Rect(pos.x,pos.y, percentOfHP * Screen.width/14, Screen.height/50), aTexture, ScaleMode.StretchToFill, true, 10.0F);
+			GUI.DrawTexture(new Rect(pos.x - Screen.width/28,pos.y, percentOfHP * Screen.width/14, Screen.height/50), aTexture, ScaleMode.StretchToFill, true, 10.0F);
 		}
 	}
 }

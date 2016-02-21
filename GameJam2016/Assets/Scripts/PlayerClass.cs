@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 public class PlayerClass : MonoBehaviour {
 
@@ -21,7 +20,6 @@ public class PlayerClass : MonoBehaviour {
         //see setname, Gets info from Game Setup Script
         //class_name = gameObject.tag+" ";
         anim = gameObject.GetComponent<Animator>();
-        setMapping();
         
 	}
 	
@@ -59,27 +57,36 @@ public class PlayerClass : MonoBehaviour {
 	void setMapping(){
 		xMap = attack;
 		if (class_name.Equals ("Knight")) {
+            print("1");
             yMap = knight_ground;
 			bMap = knight_block;
             health = 200;
             gameObject.GetComponentInChildren<AttackTrigger>().dmg = 20;
 		} else if (class_name.Equals ("Ranger")) {
-			yMap = ranger_short;
+            print("2");
+            yMap = ranger_short;
 			bMap = ranger_long;
             health = 200;
         } else if (class_name.Equals ("Berserker")) {
+            print("3");
+
             yMap = berserk_y;
             bMap = berserk_b;
+            //temp
+            yMap = ranger_short;
+            bMap = ranger_long;
             health = 200;
         } else if (class_name.Equals ("Wizard")) {
+            print("4");
             yMap = wizard_flame;
             bMap = wizard_b;
             health = 200;
         } else if (class_name.Equals ("Rogue")) {
+            print("5");
             yMap = rogue_y;
             bMap = rogue_vanish;
             health = 200;
-        } else {
+        } else if(class_name.Equals("Empty")) {
             print("No class selected removed player");
             Destroy(gameObject);
 		}
@@ -89,10 +96,12 @@ public class PlayerClass : MonoBehaviour {
 
     void damage(int dmg) {
         health -= dmg;
+        print(health);
         if (health <= 0) {
             anim.SetBool("Death", true);
             Invoke("death",1f);
             Destroy(gameObject.GetComponent<Collider2D>());
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         } else {
             anim.SetTrigger("Hit");
         }
@@ -115,21 +124,33 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void ranger_short(){
-        Vector3 playerPos = transform.position;
-        Vector3 playerDirection = transform.forward;
+        canPress = false;
+        Vector3 playerDirection;
         Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 30;
-        Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
-        Instantiate(arrow_short, spawnPos, playerRotation);
+        if (gameObject.GetComponent<MoveScript>().facingLeft)
+        {
+            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+        }
+        else
+        {
+            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+        }
+        Instantiate(arrow_long, playerDirection, playerRotation);
 
     }
 	void ranger_long(){
-        Vector3 playerPos = transform.position;
-        Vector3 playerDirection = transform.forward;
+        canPress = false;
+        Vector3 playerDirection;
         Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 30;
-        Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
-        Instantiate(arrow_long, spawnPos, playerRotation);
+        if(gameObject.GetComponent<MoveScript>().facingLeft)
+        {
+            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+        } else
+        {
+            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+        }
+        Instantiate(arrow_long, playerDirection, playerRotation);
+        
     }
 
 
