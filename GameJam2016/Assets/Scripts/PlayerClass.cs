@@ -5,7 +5,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 
-    string class_name;
+    public string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
 	//Based on xbox controller
@@ -45,6 +45,7 @@ public class PlayerClass : MonoBehaviour {
     public void setName(string name)
     {
         class_name = name;
+        print(name);
         setMapping();
     }
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SelectionScreen : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class SelectionScreen : MonoBehaviour {
 		if(Timer.isDone == true) {
 			Debug.Log ("Finished");
 			Timer.isDone = false;
+            SceneManager.LoadScene(2);
 			Timer.reset();	//TODO: remove this test
 		}
 	}
