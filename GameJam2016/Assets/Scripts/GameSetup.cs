@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameSetup : MonoBehaviour {
 
-    enum PlayerClasses { Empty, Knight, Ranger, Berserker, Assassin, Wizard, Random }
+    enum PlayerClasses { Empty, Knight, Ranger, Berserker, Rogue, Wizard, Random }
     int determineClass = 0;
 
     private bool matchStart = false;
@@ -35,21 +35,21 @@ public class GameSetup : MonoBehaviour {
                 determineClass = rand.Next(0, 101);
                 if(determineClass>80)
                 {
-                    x[i] = 6;
-                } else if(determineClass>60)
-                {
                     x[i] = 5;
-                }
-                else if (determineClass > 40)
+                } else if(determineClass>60)
                 {
                     x[i] = 4;
                 }
-                else if (determineClass > 20)
+                else if (determineClass > 40)
                 {
                     x[i] = 3;
-                } else if(determineClass>10)
+                }
+                else if (determineClass > 20)
                 {
                     x[i] = 2;
+                } else if(determineClass>10)
+                {
+                    x[i] = 1;
                 } else
                 {
                     x[i] = 1;
