@@ -69,12 +69,8 @@ public class PlayerClass : MonoBehaviour {
             health = 200;
         } else if (class_name.Equals ("Berserker")) {
             print("3");
-
             yMap = berserk_y;
             bMap = berserk_b;
-            //temp
-            yMap = ranger_short;
-            bMap = ranger_long;
             health = 200;
         } else if (class_name.Equals ("Wizard")) {
             print("4");
@@ -129,11 +125,12 @@ public class PlayerClass : MonoBehaviour {
         Quaternion playerRotation = transform.rotation;
         if (gameObject.GetComponent<MoveScript>().facingLeft)
         {
-            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0,170);
         }
         else
         {
-            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
         sleep(0.3f);
@@ -145,10 +142,12 @@ public class PlayerClass : MonoBehaviour {
         Quaternion playerRotation = transform.rotation;
         if(gameObject.GetComponent<MoveScript>().facingLeft)
         {
-            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 150);
         } else
         {
-            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 20);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
         sleep(0.3f);
