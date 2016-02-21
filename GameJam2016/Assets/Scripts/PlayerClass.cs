@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class PlayerClass : MonoBehaviour {
 
@@ -15,11 +16,15 @@ public class PlayerClass : MonoBehaviour {
 
     public GameObject arrow_short;
     public GameObject arrow_long;
+    Animator anim;
     public int health;
 	// Use this for initialization
 	void Start () {
         //see setname, Gets info from Game Setup Script
         //class_name = gameObject.tag+" ";
+        anim = gameObject.GetComponent<Animator>();
+        setMapping();
+        
 	}
 	
     public void sleep(float time) {
@@ -56,7 +61,7 @@ public class PlayerClass : MonoBehaviour {
 	void setMapping(){
 		xMap = attack;
 		if (class_name.Equals ("Knight")) {
-			yMap = knight_ground;
+            yMap = knight_ground;
 			bMap = knight_block;
             health = 200;
 		} else if (class_name.Equals ("Ranger")) {
@@ -79,8 +84,9 @@ public class PlayerClass : MonoBehaviour {
             print("No class selected removed player");
             Destroy(gameObject);
 		}
-
-	}
+        
+        anim.runtimeAnimatorController = GameObject.Find("AnimatorSelect").GetComponent<AnimationSelect>().get(class_name);
+    }
 
     void damage(int dmg) {
         health -= dmg;
