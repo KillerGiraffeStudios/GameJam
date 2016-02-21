@@ -4,7 +4,7 @@ using System.Collections;
 public class Timer : MonoBehaviour {
 
 	//the float to hold our timer with how long the timer is
-	public static double timer = 1.0;
+	public static double timer = 10.0;
 
 	//equates to true when the timer has completed
 	//static to be accessed throughout all fields
@@ -18,10 +18,11 @@ public class Timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//countdown the timer
-		timer -= Time.deltaTime;
 
-		if(timer <= 0) {
+		if (timer <= 0) {
 			isDone = true;
+		} else {
+			timer -= Time.deltaTime;
 		}
 	}
 
@@ -34,9 +35,9 @@ public class Timer : MonoBehaviour {
 	//GUI to display the timer
 	void OnGUI() {
 		var style = new GUIStyle("label");
-		style.fontSize = 40;
+		style.fontSize = 30;
 		GUI.backgroundColor = Color.clear;
-		GUI.color = Color.yellow; 
-		GUI.Box(new Rect(Screen.width/2 - 25, 50, 100, 100), "" + timer.ToString("0"), style);
+		GUI.color = Color.white; 
+		GUI.Box(new Rect(Screen.width/2 - Screen.width/50, Screen.height / 20, Screen.width/25, Screen.height/15), "" + timer.ToString("0"), style);
 	}
 }

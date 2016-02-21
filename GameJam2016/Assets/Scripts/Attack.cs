@@ -21,6 +21,7 @@ public class Attack : MonoBehaviour {
 	void Awake () {
         anim = gameObject.GetComponent<Animator>();
         attackTrigger.enabled = false;
+        blockTrigger.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -35,7 +36,7 @@ public class Attack : MonoBehaviour {
         }
     }
 
-    void block()
+    public void block()
     {
         if(!blocking)
         {

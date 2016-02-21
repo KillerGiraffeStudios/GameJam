@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour {
 
 	void OnGUI(){
 		if (curHP > 0) {
-			GUI.DrawTexture(new Rect(pos.x,pos.y, percentOfHP * Screen.width/14, Screen.height/50), aTexture, ScaleMode.StretchToFill, true, 10.0F);
+			GUI.DrawTexture(new Rect(pos.x - Screen.width/28,pos.y, percentOfHP * Screen.width/14, Screen.height/50), aTexture, ScaleMode.StretchToFill, true, 10.0F);
 		}
 	}
 }

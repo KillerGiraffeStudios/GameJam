@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 
 public class PlayerClass : MonoBehaviour {
 
@@ -98,6 +97,7 @@ public class PlayerClass : MonoBehaviour {
             anim.SetBool("Death", true);
             Invoke("death",1f);
             Destroy(gameObject.GetComponent<Collider2D>());
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         } else {
             anim.SetTrigger("Hit");
         }
@@ -112,7 +112,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void knight_block(){
-
+        GetComponent<Attack>().block();
 	}
 	void knight_ground(){
         canPress = false;
@@ -120,21 +120,38 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void ranger_short(){
-        Vector3 playerPos = transform.position;
-        Vector3 playerDirection = transform.forward;
+        
+        Vector3 playerDirection;
         Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 30;
-        Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
-        Instantiate(arrow_short, spawnPos, playerRotation);
+        if (gameObject.GetComponent<MoveScript>().facingLeft)
+        {
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0,170);
+        }
+        else
+        {
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
+        }
+        Instantiate(arrow_long, playerDirection, playerRotation);
+        sleep(0.3f);
 
     }
 	void ranger_long(){
-        Vector3 playerPos = transform.position;
-        Vector3 playerDirection = transform.forward;
+        canPress = false;
+        Vector3 playerDirection;
         Quaternion playerRotation = transform.rotation;
-        float spawnDistance = 30;
-        Vector3 spawnPos = playerPos + playerDirection * spawnDistance;
-        Instantiate(arrow_long, spawnPos, playerRotation);
+        if(gameObject.GetComponent<MoveScript>().facingLeft)
+        {
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 150);
+        } else
+        {
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 20);
+        }
+        Instantiate(arrow_long, playerDirection, playerRotation);
+        sleep(0.3f);
+
     }
 
 

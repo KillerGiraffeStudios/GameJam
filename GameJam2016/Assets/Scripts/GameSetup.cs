@@ -24,11 +24,19 @@ public class GameSetup : MonoBehaviour {
 
     void matchReady()
     {
+        //0 is default for none chosen
+        //1 - Knight
+        //2 - Ranger
+        //3 - Berserker
+        //4 - Assassin
+        //5 - Wizard
+        //6 - Random 
         matchStart = true;
         int[] x = GameSettings.Instance.playerClasses;
         for(int i=0;i< x.Length; i++)
         {
             PlayerClasses y = (PlayerClasses)x[i];
+            
             print(y.ToString());
             if (y.ToString().Equals("Random"))
             {
@@ -55,6 +63,11 @@ public class GameSetup : MonoBehaviour {
                     x[i] = 1;
                 }
             }
+            //If we don't get more than berserker done
+            /*if (x[i] == 1 || x[i] == 2 || x[i] == 4 || x[i] == 5)
+            {
+                x[i] = 3;
+            }*/
 
             y = (PlayerClasses)x[i];
             print(y.ToString());
