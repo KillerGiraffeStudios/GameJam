@@ -51,6 +51,8 @@
      <Compile Include="Assets\Scripts\AttackTrigger.cs" />
      <Compile Include="Assets\Scripts\CollisionDelegate.cs" />
      <Compile Include="Assets\Scripts\GameSettings.cs" />
+     <Compile Include="Assets\Scripts\GameSetup.cs" />
+     <Compile Include="Assets\Scripts\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\PlayerClass.cs" />
