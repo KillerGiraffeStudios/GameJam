@@ -62,6 +62,7 @@ public class PlayerClass : MonoBehaviour {
             yMap = knight_ground;
 			bMap = knight_block;
             health = 200;
+            gameObject.GetComponentInChildren<AttackTrigger>().dmg = 20;
 		} else if (class_name.Equals ("Ranger")) {
 			yMap = ranger_short;
 			bMap = ranger_long;
@@ -100,7 +101,8 @@ public class PlayerClass : MonoBehaviour {
         Destroy(gameObject);
     }
 	void attack(){
-
+        GetComponent<Attack>().basicAttack();
+        anim.SetTrigger("Attacking");
 	}
 
 

@@ -56,7 +56,7 @@ public class Attack : MonoBehaviour {
         }
     }
 
-    void basicAttack()
+    public void basicAttack()
     {
         if (!attacking)
         {
