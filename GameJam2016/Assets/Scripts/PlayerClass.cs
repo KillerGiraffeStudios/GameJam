@@ -20,7 +20,7 @@ public class PlayerClass : MonoBehaviour {
         //see setname, Gets info from Game Setup Script
         //class_name = gameObject.tag+" ";
         anim = gameObject.GetComponent<Animator>();
-        
+		setMapping ();
 	}
 	
     public void sleep(float time) {
@@ -92,6 +92,7 @@ public class PlayerClass : MonoBehaviour {
 		}
         
         anim.runtimeAnimatorController = GameObject.Find("AnimatorSelect").GetComponent<AnimationSelect>().get(class_name);
+		GetComponent<MoveScript> ().setAnim ();
     }
 
     void damage(int dmg) {

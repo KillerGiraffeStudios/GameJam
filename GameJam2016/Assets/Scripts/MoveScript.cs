@@ -13,21 +13,31 @@ public class MoveScript : MonoBehaviour {
     bool onFloor = false;
     bool isSleeping = false;
 	Animator anim;
-
+	bool animSet=false;
     // Use this for initialization
     void Start() {
         r_body = GetComponent<Rigidbody2D>();
         numOfJumpsRemaning = max_jumps;
-		anim.GetComponent<Animator> ();
     }
 
+	public void setAnim(){
+		anim = GetComponent<Animator> ();
+	}
+		
     // Update is called once per frame
     void Update()
-    {
+	{
+		//Animations
+		anim.SetFloat ("Speed", Mathf.Abs (r_body.velocity.x));
+		if (Mathf.Abs (r_body.velocity.y) > 0) {
+			jumping = true;
+		} else {
+			jumping = false;
+		}
+
         if (!isSleeping)
         {
             float h = Input.GetAxis(gameObject.name + "_Horizontal");
-			anim.SetFloat("Speed",Mathf.Abs(r_body.velocity.x));
             if (Mathf.Abs(h) > 0.15 && Mathf.Abs(r_body.velocity.x) < max_speed) {
                 if(h>0.15)
                 {
