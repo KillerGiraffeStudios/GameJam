@@ -12,8 +12,11 @@ public class HealthBar : MonoBehaviour {
 	//and its current hp as the same
 	void Start () {
 		aTexture = Resources.Load ("black") as Texture;
-		maxHP = GetComponent<PlayerClass>().health; 
-		curHP = GetComponent<PlayerClass>().health; 
+		maxHP = 100;
+		curHP = 100;
+		//maxHP = GetComponent<PlayerClass>().health; 
+		//curHP = GetComponent<PlayerClass>().health; 
+		percentOfHP = maxHP / curHP;
 	}
 
 	// Update is called once per frame
@@ -21,9 +24,10 @@ public class HealthBar : MonoBehaviour {
 		//move the health bar to the object
 		pos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x + xOffset, transform.position.y + yOffset,transform.position.z));
 		pos.y = Screen.height - pos.y;
-		pos.x += xOffset;
+		//pos.x += xOffset;
 		//check if any damage has been done, if so, reduce hp
-		curHP = GetComponent<PlayerClass>().health; 
+		//curHP = GetComponent<PlayerClass>().health; 
+		curHP -= 1;
 		percentOfHP = curHP / maxHP;
 	}
 
