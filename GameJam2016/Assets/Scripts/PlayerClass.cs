@@ -124,7 +124,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void ranger_short(){
-        canPress = false;
+        
         Vector3 playerDirection;
         Quaternion playerRotation = transform.rotation;
         if (gameObject.GetComponent<MoveScript>().facingLeft)
@@ -136,6 +136,7 @@ public class PlayerClass : MonoBehaviour {
             playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
+        sleep(0.3f);
 
     }
 	void ranger_long(){
@@ -150,7 +151,8 @@ public class PlayerClass : MonoBehaviour {
             playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
-        
+        sleep(0.3f);
+
     }
 
 
