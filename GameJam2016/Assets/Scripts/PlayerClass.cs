@@ -130,11 +130,13 @@ public class PlayerClass : MonoBehaviour {
         Quaternion playerRotation = transform.rotation;
         if (gameObject.GetComponent<MoveScript>().facingLeft)
         {
-            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 170);
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
+
         }
         else
         {
-            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
         sleep(0.3f);
@@ -146,10 +148,13 @@ public class PlayerClass : MonoBehaviour {
         Quaternion playerRotation = transform.rotation;
         if(gameObject.GetComponent<MoveScript>().facingLeft)
         {
-            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 150);
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
         } else
         {
-            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 20);
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
+
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
         sleep(0.3f);
