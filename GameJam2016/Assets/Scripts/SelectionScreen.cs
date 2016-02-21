@@ -24,7 +24,7 @@ public class SelectionScreen : MonoBehaviour {
 			Debug.Log ("Finished");
 			Timer.isDone = false;
             System.Random rand = new System.Random();
-            SceneManager.LoadScene(rand.Next(2,4));
+            SceneManager.LoadScene(2);
 		}
 	}
 

@@ -80,10 +80,10 @@ public class GameSetup : MonoBehaviour {
                 }
             }
             //If we don't get more than berserker done
-            /*if (x[i] == 1 || x[i] == 2 || x[i] == 4 || x[i] == 5)
+            if (x[i] == 1 || x[i] == 2 || x[i] == 4 || x[i] == 5)
             {
                 x[i] = 3;
-            }*/
+            }
 
             y = (PlayerClasses)x[i];
             print(y.ToString());
