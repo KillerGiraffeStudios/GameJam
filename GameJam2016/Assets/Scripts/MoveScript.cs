@@ -26,6 +26,7 @@ public class MoveScript : MonoBehaviour {
             float h = Input.GetAxis(gameObject.name + "_Horizontal");
             if (Mathf.Abs(h) > 0.15 && Mathf.Abs(r_body.velocity.x) < max_speed) {
                 r_body.AddForce(new Vector2(h * move_force, 0));
+                //gameObject.GetComponent<PlayerClass>().SendMessage("run");
             }
             if (jumpPressed == true) {
                 if (Input.GetButtonDown(gameObject.name + "_Fire1")) {
