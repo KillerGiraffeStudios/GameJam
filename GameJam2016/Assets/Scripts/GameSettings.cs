@@ -15,8 +15,6 @@ public class GameSettings : MonoBehaviour {
 	//if timer runs out, end the match and prompt restart
 	public bool matchEnd = false;
 
-
-
 	private static GameSettings _instance;
 	public static GameSettings Instance
 	{
@@ -43,11 +41,11 @@ public class GameSettings : MonoBehaviour {
 			playerAmount = new string[players];	//create the amount of players in the game
 			for (int i = 0; i < players; i++) {
 				playerAmount [i] = "P" + (i+1).ToString();
-				Debug.Log (i);
+				Debug.Log (playerAmount[i]);		//TODO: remove test
 			}
 				
 			Debug.Log(playerAmount.Length);			//TODO: remove test
-			matchSet = false;							//set false so we do not loop anymore
+			matchSet = false;						//set false so we do not loop anymore
 		}
 	}
 }

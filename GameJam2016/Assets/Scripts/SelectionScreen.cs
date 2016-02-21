@@ -14,6 +14,9 @@ public class SelectionScreen : MonoBehaviour {
 		if(Input.GetButtonDown("P1_Fire1")) {
 			Debug.Log ("Hello");
 		}
+		if(Input.GetButtonDown("P2_Fire1")) {
+			Debug.Log ("Hello2");
+		}
 		checkButtons (GameSettings.Instance.playerAmount);
 		if(Timer.isDone == true) {
 			Debug.Log ("Finished");
