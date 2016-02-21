@@ -33,7 +33,10 @@ public class Timer : MonoBehaviour {
 
 	//GUI to display the timer
 	void OnGUI() {
+		var style = new GUIStyle("label");
+		style.fontSize = 40;
 		GUI.backgroundColor = Color.clear;
-		GUI.Box(new Rect(Screen.width/2 - 25, 50, 50, 25), "" + timer.ToString("0"));
+		GUI.color = Color.yellow; 
+		GUI.Box(new Rect(Screen.width/2 - 25, 50, 100, 100), "" + timer.ToString("0"), style);
 	}
 }
