@@ -89,8 +89,11 @@ public class PlayerClass : MonoBehaviour {
     void damage(int dmg) {
         health -= dmg;
         if (health <= 0) {
+            anim.SetBool("Death", true);
             Invoke("death",1f);
             Destroy(gameObject.GetComponent<Collider2D>());
+        } else {
+            anim.SetTrigger("Hit");
         }
     }
     void death() {
