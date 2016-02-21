@@ -18,7 +18,8 @@ public class PlayerClass : MonoBehaviour {
     public int health;
 	// Use this for initialization
 	void Start () {
-        class_name = gameObject.tag+" ";
+        //see setname, Gets info from Game Setup Script
+        //class_name = gameObject.tag+" ";
 	}
 	
     public void sleep(float time) {
@@ -40,6 +41,12 @@ public class PlayerClass : MonoBehaviour {
             }
         }
 	}
+
+    public void setName(string name)
+    {
+        class_name = name;
+        setMapping();
+    }
 
     public string getName() {
         return class_name;
@@ -77,12 +84,12 @@ public class PlayerClass : MonoBehaviour {
     void damage(int dmg) {
         health -= dmg;
         if (health <= 0) {
-            death();
+            Invoke("death",1f);
+            Destroy(gameObject.GetComponent<Collider2D>());
         }
     }
     void death() {
-        Destroy(gameObject.GetComponent<Collider2D>());
-        Destroy(gameObject.GetComponent<SpriteRenderer>());
+        Destroy(gameObject);
     }
 	void attack(){
 
