@@ -99,8 +99,8 @@ public class PlayerClass : MonoBehaviour {
         health -= dmg;
         print(health);
         if (health <= 0) {
-            anim.SetBool("Death", true);
-            Invoke("death",1f);
+			anim.SetTrigger("Dead");
+            Invoke("death",3f);
             Destroy(gameObject.GetComponent<Collider2D>());
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         } else {
