@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
 
+
+
     string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
