@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArrowColl.cs" />
+     <Compile Include="Assets\Scripts\ArrowCollLong.cs" />
      <Compile Include="Assets\Scripts\Attack.cs" />
      <Compile Include="Assets\Scripts\AttackTrigger.cs" />
      <Compile Include="Assets\Scripts\CollisionDelegate.cs" />
@@ -53,7 +54,6 @@
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\PlayerClass.cs" />
-     <Compile Include="Assets\Scripts\SelectClass.cs" />
      <Compile Include="Assets\Scripts\SelectionScreen.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\meta_script.cs" />
