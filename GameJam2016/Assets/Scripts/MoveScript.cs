@@ -18,11 +18,12 @@ public class MoveScript : MonoBehaviour {
     void Start() {
         r_body = GetComponent<Rigidbody2D>();
         numOfJumpsRemaning = max_jumps;
+        anim = GetComponent<Animator>();
     }
 
-	public void setAnim(){
-		anim = GetComponent<Animator> ();
-	}
+	public void setAnim() {
+        anim = GetComponent<Animator>();
+    }
 		
     // Update is called once per frame
     void Update()

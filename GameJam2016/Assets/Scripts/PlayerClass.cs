@@ -20,8 +20,10 @@ public class PlayerClass : MonoBehaviour {
         //see setname, Gets info from Game Setup Script
         //class_name = gameObject.tag+" ";
         anim = gameObject.GetComponent<Animator>();
-	}
-	
+        //*******************************************************************
+        setMapping();
+    }
+
     public void sleep(float time) {
         canPress = false;
         Invoke("wake", time);
@@ -96,7 +98,6 @@ public class PlayerClass : MonoBehaviour {
             print("No class selected removed player");
             Destroy(gameObject);
 		}
-        
         anim.runtimeAnimatorController = GameObject.Find("AnimatorSelect").GetComponent<AnimationSelect>().get(class_name);
 		GetComponent<MoveScript> ().setAnim ();
     }
