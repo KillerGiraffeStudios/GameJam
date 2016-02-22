@@ -36,8 +36,10 @@ public class PlayerClass : MonoBehaviour {
             if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
                 xMap();
             }else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
+                anim.SetTrigger("Special");
                 yMap();
             } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
+                anim.SetTrigger("Block");
                 bMap();
             }
         }
