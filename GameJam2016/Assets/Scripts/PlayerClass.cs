@@ -20,7 +20,6 @@ public class PlayerClass : MonoBehaviour {
         //see setname, Gets info from Game Setup Script
         //class_name = gameObject.tag+" ";
         anim = gameObject.GetComponent<Animator>();
-        
 	}
 	
     public void sleep(float time) {
@@ -34,12 +33,17 @@ public class PlayerClass : MonoBehaviour {
 	void Update () {
         if (canPress) {
             if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
+				anim.SetTrigger ("Attacking");
                 xMap();
             }else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
                 anim.SetTrigger("Special");
                 yMap();
             } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
                 anim.SetTrigger("Block");
+				anim.SetTrigger ("Special");
+                yMap();
+            } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
+				anim.SetTrigger ("Block");
                 bMap();
             }
         }
@@ -94,14 +98,15 @@ public class PlayerClass : MonoBehaviour {
 		}
         
         anim.runtimeAnimatorController = GameObject.Find("AnimatorSelect").GetComponent<AnimationSelect>().get(class_name);
+		GetComponent<MoveScript> ().setAnim ();
     }
 
     void damage(int dmg) {
         health -= dmg;
         print(health);
         if (health <= 0) {
-            anim.SetBool("Death", true);
-            Invoke("death",1f);
+			anim.SetTrigger("Dead");
+            Invoke("death",3f);
             Destroy(gameObject.GetComponent<Collider2D>());
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
         } else {
@@ -113,7 +118,6 @@ public class PlayerClass : MonoBehaviour {
     }
 	void attack(){
         GetComponent<Attack>().basicAttack();
-        anim.SetTrigger("Attacking");
 	}
 
 
@@ -131,11 +135,13 @@ public class PlayerClass : MonoBehaviour {
         Quaternion playerRotation = transform.rotation;
         if (gameObject.GetComponent<MoveScript>().facingLeft)
         {
-            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 170);
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
+
         }
         else
         {
-            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
         sleep(0.3f);
@@ -147,10 +153,13 @@ public class PlayerClass : MonoBehaviour {
         Quaternion playerRotation = transform.rotation;
         if(gameObject.GetComponent<MoveScript>().facingLeft)
         {
-            playerDirection = new Vector3(transform.position.x - 2, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 150);
+            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
         } else
         {
-            playerDirection = new Vector3(transform.position.x + 2, transform.position.y);
+            playerRotation.eulerAngles = new Vector3(0, 0, 20);
+            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
+
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
         sleep(0.3f);
@@ -160,7 +169,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void berserk_y(){
-
+		GetComponent<Kick> ().activate();
 	}
 	void berserk_b(){
 
@@ -170,7 +179,7 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void wizard_flame(){
-
+		GetComponent<Flame> ().activate ();
 	}
 	void wizard_b(){
 

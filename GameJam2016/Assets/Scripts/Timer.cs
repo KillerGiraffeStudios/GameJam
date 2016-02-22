@@ -4,7 +4,7 @@ using System.Collections;
 public class Timer : MonoBehaviour {
 
 	//the float to hold our timer with how long the timer is
-	public static double timer = 10.0;
+	public static double timer = 5.0;
 
 	//equates to true when the timer has completed
 	//static to be accessed throughout all fields
@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour {
 
 	//reset the timer if needed
 	public static void reset() {
-		timer = 10.0;
+		timer = 5.0;
 		isDone = false;
 	}
 
