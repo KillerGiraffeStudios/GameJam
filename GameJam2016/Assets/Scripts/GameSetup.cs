@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameSetup : MonoBehaviour {
 
@@ -31,7 +32,7 @@ public class GameSetup : MonoBehaviour {
 			if (timer <= 0) {
 				Destroy (GameObject.Find ("GameSettings"));
 				timer = 3.0;
-				Application.LoadLevel (0);
+                SceneManager.LoadScene(0);
 			}
 		} else {
 			hasEnded ();

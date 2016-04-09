@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
@@ -86,8 +87,8 @@ public class Menu : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width / 2 - Screen.width / 14, Screen.height / 2 + Screen.height / 4, Screen.width / 7, Screen.height / 6), create) && canStart == true) {
 				GameSettings.Instance.matchSet = true;	//set this to true
 				resetColors ();							//make sure that everything is reset
-				canStart = false;						//reset the match settings for new game
-				Application.LoadLevel (1);				//comment this - will load the level once the settings are good		
+				canStart = false;                       //reset the match settings for new game
+                SceneManager.LoadScene(1);				//comment this - will load the level once the settings are good		
 			}
 		}
 	}
