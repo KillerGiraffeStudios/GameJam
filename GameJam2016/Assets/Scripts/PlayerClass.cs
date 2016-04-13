@@ -33,16 +33,12 @@ public class PlayerClass : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (canPress) {
+        if (canPress && !gameObject.GetComponent<MoveScript>().lock_strong) {
             if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
-				anim.SetTrigger ("Attacking");
+				anim.SetTrigger ("Attack");
                 xMap();
             }else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
                 anim.SetTrigger("Special");
-                yMap();
-            } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
-                anim.SetTrigger("Block");
-				anim.SetTrigger ("Special");
                 yMap();
             } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
 				anim.SetTrigger ("Block");
@@ -99,7 +95,7 @@ public class PlayerClass : MonoBehaviour {
             Destroy(gameObject);
 		}
         anim.runtimeAnimatorController = GameObject.Find("AnimatorSelect").GetComponent<AnimationSelect>().get(class_name);
-		GetComponent<MoveScript> ().setAnim ();
+		//GetComponent<MoveScript> ().setAnim ();
     }
 
     void damage(int dmg) {
@@ -110,6 +106,7 @@ public class PlayerClass : MonoBehaviour {
             Invoke("death",3f);
             Destroy(gameObject.GetComponent<Collider2D>());
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            gameObject.GetComponent<MoveScript>().lock_strong = true;
         } else {
             anim.SetTrigger("Hit");
         }
@@ -118,6 +115,7 @@ public class PlayerClass : MonoBehaviour {
         Destroy(gameObject);
     }
 	void attack(){
+        
         GetComponent<Attack>().basicAttack();
 	}
 
