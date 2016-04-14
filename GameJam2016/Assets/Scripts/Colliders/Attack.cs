@@ -13,13 +13,13 @@ public class Attack : MonoBehaviour {
     public Collider2D attackTrigger;
     public Collider2D blockTrigger;
 
-    private Animator anim;
+    //private Animator anim;
 
     public GameObject Block;
 
 	// Use this for initialization
 	void Awake () {
-        anim = gameObject.GetComponent<Animator>();
+        //anim = gameObject.GetComponent<Animator>();
         attackTrigger.enabled = false;
         blockTrigger.enabled = false;
 	}
