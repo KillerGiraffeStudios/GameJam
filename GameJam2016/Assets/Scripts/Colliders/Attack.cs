@@ -82,11 +82,13 @@ public class Attack : MonoBehaviour {
     {
         attacking = false;
         attackTrigger.enabled = false;
+        gameObject.GetComponent<MoveScript>().lock_weak = false;
     }
 
     void finishBlock() {
         blocking = false;
         blockTrigger.enabled = false;
+        gameObject.GetComponent<MoveScript>().lock_weak = false;
     }
 
     void destroySelf()

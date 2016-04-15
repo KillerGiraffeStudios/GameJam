@@ -15,7 +15,7 @@ public class MoveScript : MonoBehaviour {
     bool onFloor = false;
     bool isSleeping = false;
 	Animator anim;
-	bool animSet=false;
+	//bool animSet=false;
     // Use this for initialization
     void Start() {
         r_body = GetComponent<Rigidbody2D>();
