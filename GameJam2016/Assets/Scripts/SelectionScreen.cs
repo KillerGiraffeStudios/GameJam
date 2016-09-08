@@ -12,7 +12,7 @@ public class SelectionScreen : MonoBehaviour {
 		info = Resources.Load ("select") as Texture2D;
 	}
 
-	string thing = "";
+	
 	// Update is called once per frame
 	void Update () {
 		if (time == false) {

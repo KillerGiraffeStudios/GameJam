@@ -19,7 +19,7 @@ public class AnimationSelect : MonoBehaviour {
     
     public RuntimeAnimatorController get(string str) {
         if (str.Equals("Knight")){
-                return Knight;
+            return Knight;
         }else if(str.Equals("Ranger")){
             return Ranger;
         } else if (str.Equals("Berserker")) {
