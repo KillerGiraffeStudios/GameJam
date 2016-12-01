@@ -18,18 +18,13 @@ public class AnimationSelect : MonoBehaviour {
 	}
     
     public RuntimeAnimatorController get(string str) {
-        if (str.Equals("Knight")){
-            return Knight;
-        }else if(str.Equals("Ranger")){
-            return Ranger;
-        } else if (str.Equals("Berserker")) {
-            return Berserker;
-        } else if (str.Equals("Rogue")) {
-            return Rogue;
-        } else if (str.Equals("Wizard")) {
-            return Wizard;
-        } else {
-            return null;
+        switch (str) {
+            case "Knight": return Knight;
+            case "Ranger": return Ranger;
+            case "Berserker": return Berserker;
+            case "Rogue": return Rogue;
+            case "Wizard":return Wizard;
+            default: print("FAIL"); return null;
         }
     }
 }
