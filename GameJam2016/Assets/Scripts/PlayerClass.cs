@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
-    bool DEBUG = false;
     public string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
@@ -76,9 +75,10 @@ public class PlayerClass : MonoBehaviour {
 
                 yMap = berserk_y;
                 bMap = berserk_b;
-                //temp
+                //temp****************************************************************************************************************************
                 yMap = ranger_short;
                 bMap = ranger_long;
+                //********************************************************************************************************************************
                 health = 200;
                 break;
             case "Wizard":
