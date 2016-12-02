@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
-
+    bool DEBUG = false;
     public string class_name;
     bool canPress = true;
     delegate void buttonDelegate();
@@ -60,39 +60,41 @@ public class PlayerClass : MonoBehaviour {
 
 	void setMapping(){
 		xMap = attack;
-		if (class_name.Equals ("Knight")) {
-            print("1");
-            yMap = knight_ground;
-			bMap = knight_block;
-            health = 200;
-            gameObject.GetComponentInChildren<AttackTrigger>().dmg = 20;
-		} else if (class_name.Equals ("Ranger")) {
-            print("2");
-            yMap = ranger_short;
-			bMap = ranger_long;
-            health = 200;
-        } else if (class_name.Equals ("Berserker")) {
-            print("3");
+        switch (class_name) {
+            case "Knight":
+                yMap = knight_ground;
+			    bMap = knight_block;
+                health = 200;
+                gameObject.GetComponentInChildren<AttackTrigger>().dmg = 20;
+                break;
+            case "Ranger":
+                yMap = ranger_short;
+			    bMap = ranger_long;
+                health = 200;
+                break;
+            case "Berserker":
 
-            yMap = berserk_y;
-            bMap = berserk_b;
-            //temp
-            yMap = ranger_short;
-            bMap = ranger_long;
-            health = 200;
-        } else if (class_name.Equals ("Wizard")) {
-            print("4");
-            yMap = wizard_flame;
-            bMap = wizard_b;
-            health = 200;
-        } else if (class_name.Equals ("Rogue")) {
-            print("5");
-            yMap = rogue_y;
-            bMap = rogue_vanish;
-            health = 200;
-        } else if(class_name.Equals("Empty")) {
-            print("No class selected removed player");
-            Destroy(gameObject);
+                yMap = berserk_y;
+                bMap = berserk_b;
+                //temp
+                yMap = ranger_short;
+                bMap = ranger_long;
+                health = 200;
+                break;
+            case "Wizard":
+                yMap = wizard_flame;
+                bMap = wizard_b;
+                health = 200;
+                break;
+            case "Rogue":
+                yMap = rogue_y;
+                bMap = rogue_vanish;
+                health = 200;
+                break;
+            default:
+                print("No class selected removed player");
+                Destroy(gameObject);
+                break;
 		}
         anim.runtimeAnimatorController = GameObject.Find("AnimatorSelect").GetComponent<AnimationSelect>().get(class_name);
 		//GetComponent<MoveScript> ().setAnim ();
