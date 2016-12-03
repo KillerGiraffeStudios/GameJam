@@ -76,18 +76,26 @@ public class MoveScript : MonoBehaviour {
 
 
             if(Input.GetButtonDown(gameObject.name + "_Fire1")) {
-                
-                Vector2 tmp = r_body.velocity;
-                tmp.y = 0;
 
-                if (r_body.velocity.x * Input.GetAxis(gameObject.name + "_Horizontal") < 0)
-                    tmp.x = 0;
-                r_body.velocity = tmp;
-
-                r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal") * move_force, initial_jump_force));
+                if (numOfJumpsRemaning > 0) {
+                    numOfJumpsRemaning--;
 
 
-                anim.SetTrigger("Jump");
+                    Vector2 tmp = r_body.velocity;
+                    tmp.y = 0;
+
+                    if (r_body.velocity.x * Input.GetAxis(gameObject.name + "_Horizontal") < 0)
+                        tmp.x = 0;
+                    else {
+                        tmp.x = r_body.velocity.x / 10;
+                    }
+                    r_body.velocity = tmp;
+
+                    r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal") * move_force, initial_jump_force));
+
+
+                    anim.SetTrigger("Jump");
+                }
             }
 
             if (Input.GetButton(gameObject.name + "_Fire1")) {
@@ -97,8 +105,6 @@ public class MoveScript : MonoBehaviour {
             if (Input.GetButtonUp(gameObject.name + "_Fire1"))
             {
                 jump_time = 0;
-                if (numOfJumpsRemaning > 0)
-                    numOfJumpsRemaning--; 
 
             }
 
