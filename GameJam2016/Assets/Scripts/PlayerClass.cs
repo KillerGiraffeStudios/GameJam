@@ -14,6 +14,8 @@ public class PlayerClass : MonoBehaviour {
     public GameObject arrow_long;
     Animator anim;
     public int health;
+
+    private int dmg_dealt = 10;
 	// Use this for initialization
 	void Start () {
         //see setname, Gets info from Game Setup Script
@@ -64,7 +66,7 @@ public class PlayerClass : MonoBehaviour {
                 yMap = knight_ground;
 			    bMap = knight_block;
                 health = 200;
-                gameObject.GetComponentInChildren<AttackTrigger>().dmg = 20;
+                dmg_dealt = 20;
                 break;
             case "Ranger":
                 yMap = ranger_short;
@@ -72,13 +74,8 @@ public class PlayerClass : MonoBehaviour {
                 health = 200;
                 break;
             case "Berserker":
-
                 yMap = berserk_y;
                 bMap = berserk_b;
-                //temp****************************************************************************************************************************
-                yMap = ranger_short;
-                bMap = ranger_long;
-                //********************************************************************************************************************************
                 health = 200;
                 break;
             case "Wizard":
@@ -117,14 +114,13 @@ public class PlayerClass : MonoBehaviour {
         Destroy(gameObject);
     }
 	void attack(){
-        
-        GetComponent<Attack>().basicAttack();
+        anim.SetTrigger("Attack");
 	}
 
 
 	void knight_block(){
-        GetComponent<Attack>().block();
-	}
+        anim.SetTrigger("Block");
+    }
 	void knight_ground(){
         canPress = false;
 	}
@@ -145,7 +141,7 @@ public class PlayerClass : MonoBehaviour {
             playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
-        sleep(0.3f);
+        
 
     }
 	void ranger_long(){
@@ -163,14 +159,13 @@ public class PlayerClass : MonoBehaviour {
 
         }
         Instantiate(arrow_long, playerDirection, playerRotation);
-        sleep(0.3f);
 
     }
 
 
 
 	void berserk_y(){
-		GetComponent<Kick> ().activate();
+
 	}
 	void berserk_b(){
 
@@ -180,8 +175,8 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void wizard_flame(){
-		GetComponent<Flame> ().activate ();
-	}
+        anim.SetTrigger("Special");
+    }
 	void wizard_b(){
 
 	}

@@ -14,6 +14,7 @@ public class MoveScript : MonoBehaviour {
     public float continued_jump_force = 10f;
     public int jump_limit = 20;
     int jump_time = 0;
+    bool jump_down = false;
     public bool facingLeft;
 
     public bool lock_weak = false;     //Used for animation and facing direction
@@ -28,6 +29,7 @@ public class MoveScript : MonoBehaviour {
         r_body = GetComponent<Rigidbody2D>();
         numOfJumpsRemaning = max_jumps;
         anim = GetComponent<Animator>();
+        
     }
 
 	public void setAnim() {
@@ -80,6 +82,8 @@ public class MoveScript : MonoBehaviour {
                 if (numOfJumpsRemaning > 0) {
                     numOfJumpsRemaning--;
 
+                    jump_down = true;
+
 
                     Vector2 tmp = r_body.velocity;
                     tmp.y = 0;
@@ -99,11 +103,13 @@ public class MoveScript : MonoBehaviour {
             }
 
             if (Input.GetButton(gameObject.name + "_Fire1")) {
-                jump();
+                if(jump_down)
+                    jump();
             }
 
             if (Input.GetButtonUp(gameObject.name + "_Fire1"))
             {
+                jump_down = false;
                 jump_time = 0;
 
             }

@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: a644d73e4f63d8d41970e787dbf408ac
-timeCreated: 1456037773
+timeCreated: 1480729881
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Knight: {fileID: 22100000, guid: d414e7a004b612d43b507625643e9f5c, type: 2}
+  - Ranger: {fileID: 22100000, guid: 4fc9721209352704a9106241bf10a001, type: 2}
+  - Berserker: {fileID: 22100000, guid: 3e2f6c14179f0fa47b90f1346f1c5755, type: 2}
+  - Assassin: {fileID: 9100000, guid: 57983a6a439fa07489210d83e98b90b5, type: 2}
+  - Wizard: {fileID: 22100000, guid: 6e5a7f92bfcace4449548671e1503092, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
