@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ArrowCollLong : MonoBehaviour
-{
+public class ArrowCollLong : MonoBehaviour 
+    {
     float launch_force = 50;
     public int arrow_damage = 10;
     Rigidbody2D r_body;
@@ -18,12 +18,12 @@ public class ArrowCollLong : MonoBehaviour
     void Update()
     {
         //rotates arrow according to its velocity
-        transform.rotation.eulerAngles.Set(0, 0, Mathf.Cos(r_body.velocity.y / r_body.velocity.x));
+        if (r_body != null)
+            transform.rotation.eulerAngles.Set(0, 0, Mathf.Cos(r_body.velocity.y / r_body.velocity.x));
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        print(coll.ToString());
         if (coll.tag.Equals("Floor"))
         {//Sticks to floor and destroys itself later
             Destroy(GetComponent<Collider2D>());
@@ -35,7 +35,7 @@ public class ArrowCollLong : MonoBehaviour
             //do nothing
         }
         else
-        {//send damage message to hit thing and destroy instantly
+        {//send damage message to hit thing and destroy arrow instantly
             coll.SendMessage("damage", arrow_damage);
             DestroySelf();
         }
