@@ -86,9 +86,9 @@ public class PlayerClass : MonoBehaviour {
                 bMap = wizard_b;
                 health = 200;
                 break;
-            case "Rogue":
-                yMap = rogue_y;
-                bMap = rogue_vanish;
+            case "Assassin":
+                yMap = assassin_y;
+                bMap = assassin_vanish;
                 health = 200;
                 break;
             default:
@@ -189,10 +189,10 @@ public class PlayerClass : MonoBehaviour {
 
 
 
-	void rogue_y(){
+	void assassin_y(){
 
 	}
-	void rogue_vanish(){
+	void assassin_vanish(){
 
 	}
 

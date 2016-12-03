@@ -85,6 +85,9 @@ public class MoveScript : MonoBehaviour {
                 r_body.velocity = tmp;
 
                 r_body.AddForce(new Vector2(Input.GetAxis(gameObject.name + "_Horizontal") * move_force, initial_jump_force));
+
+
+                anim.SetTrigger("Jump");
             }
 
             if (Input.GetButton(gameObject.name + "_Fire1")) {
@@ -118,7 +121,6 @@ public class MoveScript : MonoBehaviour {
             jump_time++;
         }
         //r_body.AddForce(new Vector2(0, jump_force));
-        anim.SetTrigger("Jump");
         
     }
     void OnTriggerEnter2D(Collider2D coll) {

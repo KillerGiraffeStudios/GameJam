@@ -5,7 +5,7 @@ public class AnimationSelect : MonoBehaviour {
     public RuntimeAnimatorController Knight;
     public RuntimeAnimatorController Ranger;
     public RuntimeAnimatorController Berserker;
-    public RuntimeAnimatorController Rogue;
+    public RuntimeAnimatorController Assassin;
     public RuntimeAnimatorController Wizard;
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class AnimationSelect : MonoBehaviour {
             case "Knight": return Knight;
             case "Ranger": return Ranger;
             case "Berserker": return Berserker;
-            case "Rogue": return Rogue;
+            case "Assassin": return Assassin;
             case "Wizard":return Wizard;
             default: print("FAIL"); return null;
         }
