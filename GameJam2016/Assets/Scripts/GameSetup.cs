@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameSetup : MonoBehaviour {
 
-    enum PlayerClasses { Empty, Knight, Ranger, Berserker, Rogue, Wizard, Random }
+    enum PlayerClasses { Empty, Knight, Ranger, Berserker, Assassin, Wizard, Random }
     int determineClass = 0;
 
 	//the variables to check if game has ended 
@@ -72,9 +72,6 @@ public class GameSetup : MonoBehaviour {
                 else if (determineClass > 20)
                 {
                     x[i] = 2;
-                } else if(determineClass>10)
-                {
-                    x[i] = 1;
                 } else
                 {
                     x[i] = 1;
