@@ -1,0 +1,26 @@
+Assassin
+-Special
+Use attack animation
+make new behind hitbox
+
+
+Berserker
+-Special???
+
+
+
+Knight 
+-Charge
+animation can be taken from Jump2 and Attack2
+
+
+
+Ranger
+-Special
+use short and long attack animations
+
+
+
+Wizard
+-Special
+Supernova?
