@@ -24,3 +24,21 @@ use short and long attack animations
 Wizard
 -Special
 Supernova?
+
+
+
+
+
+
+LOCKS:
+Each lock disables all player input for its duration
+????? DO WE ALSO LOCK GRAVITY (IE. PERSON ATTACKS STOPS FALLING)?????
+
+Weak: Vulnerable(Can be hit ie. pushed to another stronger state)
+Strong: Invulnerable(Remains in current state and can't be pushed to any other state)
+
+
+States:
+Blank:	Idle	Running	Jumping	Air	Falling
+Weak:	Attack	Block	Special
+Strong:	Dead	Hit

@@ -51,7 +51,7 @@ public class PlayerClass : MonoBehaviour {
     public void setName(string name)
     {
         class_name = name;
-        print(name);
+
         setMapping();
     }
 
@@ -97,6 +97,9 @@ public class PlayerClass : MonoBehaviour {
 		//GetComponent<MoveScript> ().setAnim ();
     }
 
+    void test() {
+
+    }
     void damage(int dmg) {
         health -= dmg;
         print(health);
