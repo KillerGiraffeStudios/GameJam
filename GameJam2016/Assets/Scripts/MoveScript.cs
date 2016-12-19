@@ -8,7 +8,7 @@ using System.Collections;
  */
 public class MoveScript : MonoBehaviour {
     public int max_speed = 3;
-    public int move_force = 10;
+    public int move_force = 20;
     public int max_jumps = 2;
     public float initial_jump_force = 75f;
     public float continued_jump_force = 10f;

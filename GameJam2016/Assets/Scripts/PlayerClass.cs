@@ -97,12 +97,18 @@ public class PlayerClass : MonoBehaviour {
 		//GetComponent<MoveScript> ().setAnim ();
     }
 
-    void test() {
+    
 
-    }
     void damage(int dmg) {
+        //Middle of hit/Dead animation? INVULNERABLE!!
+        if (gameObject.GetComponent<MoveScript>().lock_strong)
+            return;
+
+        //Deal damage
         health -= dmg;
-        print(health);
+
+        //Trigger death if health below zero
+        //otherwise trigger damage
         if (health <= 0) {
 			anim.SetTrigger("Dead");
             Invoke("death",3f);
