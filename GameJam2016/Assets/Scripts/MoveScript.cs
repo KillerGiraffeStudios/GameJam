@@ -54,20 +54,21 @@ public class MoveScript : MonoBehaviour {
 
         if (!lock_weak) {
             float h = Input.GetAxis(gameObject.name + "_Horizontal");
-            if (Mathf.Abs(h) > 0.15 && Mathf.Abs(r_body.velocity.x) < max_speed && !lock_weak) {
+            if (Mathf.Abs(h) > 0.15) {
+                bool oldFacing = facingLeft;
                 if (h > 0.15) {
                     facingLeft = false;
+                    //transform.rotation = new Quaternion(0, 0, 0,0);
                 } else {
                     facingLeft = true;
+                    //transform.rotation = new Quaternion(0, 180, 0,0);
                 }
-                r_body.AddForce(new Vector2(h * move_force, 0));
-                //gameObject.GetComponent<PlayerClass>().SendMessage("run");
-            }
-            if (Mathf.Abs(h) > .1f) {
-                Vector3 tmp = transform.localScale;
-                tmp.x = Mathf.Abs(tmp.x);
-                tmp.x *= Mathf.Sign(h);
-                transform.localScale = tmp;
+                if (oldFacing != facingLeft)
+                    transform.Rotate(new Vector3(0, 180, 0));
+
+
+                if (Mathf.Abs(r_body.velocity.x) < max_speed)
+                    r_body.AddForce(new Vector2(h * move_force, 0));
             }
 
 

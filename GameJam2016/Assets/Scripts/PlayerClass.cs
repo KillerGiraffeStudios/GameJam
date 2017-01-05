@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
     public string class_name;
-    bool canPress = true;
     delegate void buttonDelegate();
 	//Based on xbox controller
 	buttonDelegate xMap;//mapping for x button
@@ -25,23 +24,22 @@ public class PlayerClass : MonoBehaviour {
         setMapping();
     }
 
-    public void sleep(float time) {
-        canPress = false;
-        Invoke("wake", time);
-    }
-    void wake() {
-        canPress = true;
-    }
+    /*
+     * _Fire2 = bMap = Block
+     * _Fire3 = xMap = Attack
+     * _Fire4 = yMap = Special
+    */
+    
 	// Update is called once per frame
 	void Update () {
-        if (canPress && !gameObject.GetComponent<MoveScript>().lock_strong) {
-            if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
+        if (!gameObject.GetComponent<MoveScript>().lock_strong) {
+            if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
 				anim.SetTrigger ("Attack");
                 xMap();
-            }else if (Input.GetButtonDown(gameObject.name + "_Fire3")) {
+            }else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
                 anim.SetTrigger("Special");
                 yMap();
-            } else if (Input.GetButtonDown(gameObject.name + "_Fire4")) {
+            } else if (Input.GetButtonDown(gameObject.name + "_Fire2")) {
 				anim.SetTrigger ("Block");
                 bMap();
             }
@@ -69,8 +67,8 @@ public class PlayerClass : MonoBehaviour {
                 dmg_dealt = 20;
                 break;
             case "Ranger":
-                yMap = ranger_short;
-			    bMap = ranger_long;
+                yMap = ranger_long;
+			    bMap = ranger_short;
                 health = 200;
                 break;
             case "Berserker":
@@ -122,55 +120,32 @@ public class PlayerClass : MonoBehaviour {
     void death() {
         Destroy(gameObject);
     }
-	void attack(){
+	void attack() {
         anim.SetTrigger("Attack");
-	}
+    }
 
 
 	void knight_block(){
-        anim.SetTrigger("Block");
     }
 	void knight_ground(){
-        canPress = false;
+
 	}
 
 
 	void ranger_short(){
-        
-        Vector3 playerDirection;
-        Quaternion playerRotation = transform.rotation;
-        if (gameObject.GetComponent<MoveScript>().facingLeft)
-        {
-            playerRotation.eulerAngles = new Vector3(0, 0, 170);
-            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
-
-        }
-        else
-        {
-            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
-        }
-        Instantiate(arrow_long, playerDirection, playerRotation);
-        
-
+        GameObject temp = Instantiate<GameObject>(arrow_short);
+        temp.transform.position = arrow_short.transform.position;
+        if (GetComponent<MoveScript>().facingLeft)
+            temp.transform.Rotate(0, 0, 180);
+        temp.SetActive(true);
     }
 	void ranger_long(){
-        canPress = false;
-        Vector3 playerDirection;
-        Quaternion playerRotation = transform.rotation;
-        if(gameObject.GetComponent<MoveScript>().facingLeft)
-        {
-            playerRotation.eulerAngles = new Vector3(0, 0, 150);
-            playerDirection = new Vector3(transform.position.x - 1, transform.position.y);
-        } else
-        {
-            playerRotation.eulerAngles = new Vector3(0, 0, 20);
-            playerDirection = new Vector3(transform.position.x + 1, transform.position.y);
-
-        }
-        Instantiate(arrow_long, playerDirection, playerRotation);
-
+        GameObject temp = Instantiate<GameObject>(arrow_long);
+        temp.transform.position = arrow_long.transform.position;
+        if (GetComponent<MoveScript>().facingLeft)
+            temp.transform.Rotate(0, 180, 90);
+        temp.SetActive(true);
     }
-
 
 
 	void berserk_y(){
@@ -184,7 +159,6 @@ public class PlayerClass : MonoBehaviour {
 
 
 	void wizard_flame(){
-        anim.SetTrigger("Special");
     }
 	void wizard_b(){
 
